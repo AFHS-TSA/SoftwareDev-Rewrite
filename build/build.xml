@@ -19,6 +19,16 @@
 	
 		<mkdir dir="externalLibs" />
 	
+		<copy todir="externalLibs">
+			<fileset dir="/home/jason/Documents/Dependencies">
+				<filename name="controlsfx-8.40.13.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="/home/jason/Documents/Dependencies">
+				<filename name="jfoenix-8.0.1.jar"/>
+			</fileset>
+		</copy>
 	
 		<mkdir dir="project" />
 		<copy todir="project">
@@ -38,6 +48,8 @@
 		<!-- Copy project-libs references -->
 		<copy todir="build/libs">
 			<fileset dir="externalLibs">
+				<include name="jfoenix-8.0.1.jar"/>
+				<include name="controlsfx-8.40.13.jar"/>
 			</fileset>
 		</copy>
 	
