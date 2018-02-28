@@ -1,1 +1,13 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Hamburger Style */
+
+.jfx-hamburger {
+    -fx-spacing: 5;
+    -fx-cursor: hand;
+}
+
+.jfx-hamburger StackPane {
+   /* -fx-pref-width: 40px;
+    -fx-pref-height: 7px;*/
+    -fx-background-color: #FFF;
+    -fx-background-radius: 5px;
+}

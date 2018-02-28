@@ -14,9 +14,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class BaseController implements Initializable {
 
+	@FXML
+	private BorderPane basePane;
+	@FXML
+	private AnchorPane rightNavDrawer;
 	@FXML
 	private JFXDrawer leftNavDrawer;
 	@FXML
@@ -53,6 +58,30 @@ public class BaseController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Drawer();
+		
+		
+		basePane.widthProperty().addListener((obs, oldVal, newVal) -> {
+			
+        	
+        	System.out.println(basePane.getWidth());
+        	if(basePane.getWidth() < 875) {
+        		navBurger.setVisible(true);
+        		leftNavDrawer.setVisible(true);
+        		rightNavDrawer.setVisible(false);
+        	} else {
+        		navBurger.setVisible(false);
+        		rightNavDrawer.setVisible(true);
+        		leftNavDrawer.setVisible(false);
+        		
+        		try {
+    				AnchorPane pane = FXMLLoader.load(getClass().getResource("/main/resources/app/view/DrawerContent.fxml"));
+    				rightNavDrawer.getChildren().setAll(pane);
+    			} catch (IOException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+        	}
+});
 	}
 	
 }
