@@ -54,34 +54,38 @@ public class BaseController implements Initializable {
     	JFXDepthManager shadow = null;
     	//shadow.setDepth(topBar, Variables.shadow);
     }
+    
+    @FXML
+    public void test() {
+
+    }
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Drawer();
 		
-		
 		basePane.widthProperty().addListener((obs, oldVal, newVal) -> {
 			
+	    	try {
+				AnchorPane pane = FXMLLoader.load(getClass().getResource("/main/resources/app/view/DrawerContent.fxml"));
+				rightNavDrawer.getChildren().setAll(pane);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         	
         	System.out.println(basePane.getWidth());
         	if(basePane.getWidth() < 875) {
         		navBurger.setVisible(true);
         		leftNavDrawer.setVisible(true);
-        		rightNavDrawer.setVisible(false);
+        		basePane.getChildren().remove(rightNavDrawer);
         	} else {
         		navBurger.setVisible(false);
-        		rightNavDrawer.setVisible(true);
-        		leftNavDrawer.setVisible(false);
-        		
-        		try {
-    				AnchorPane pane = FXMLLoader.load(getClass().getResource("/main/resources/app/view/DrawerContent.fxml"));
-    				rightNavDrawer.getChildren().setAll(pane);
-    			} catch (IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
+            	leftNavDrawer.setVisible(false);
+            	basePane.getChildren().add(rightNavDrawer);
+            	basePane.setRight(rightNavDrawer);
         	}
-});
+		});
 	}
 	
 }
