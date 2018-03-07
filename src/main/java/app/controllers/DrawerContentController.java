@@ -14,7 +14,8 @@ public class DrawerContentController {
     @FXML
     private void onCheck() {
         if (checkStudy.isSelected()) {
-            checkStudy.setText("Study " + set1.SM2() + " hours from now");
+            set1.SM2();
+            checkStudy.setText("Study at " + set1.getHour() + ":" + set1.getMinute() + " " + set1.getMeridiem() + " " + set1.getDay());
         }
     }
 

@@ -1,5 +1,8 @@
 package main.java.app;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 public class SpacedRep {
     static double time1 = 0;
     static double time2 = .041;
@@ -8,8 +11,8 @@ public class SpacedRep {
     static int rN = 0;
     static int d = 0;
 
-    public static void main (String[] args) {
-    }
+    ZoneId zone = ZoneId.systemDefault();
+    ZonedDateTime time = ZonedDateTime.now(zone);
 
     public SpacedRep() {
 
@@ -24,13 +27,10 @@ public class SpacedRep {
             double y1 = Math.exp(exp1);
             double y2 = Math.exp(exp2);
             if (y1 - y2 > .3) {
-                System.out.println("Study");
                 memStrength++;
                 time2 = .041;
                 n++;
-                //d+=1;
             } else {
-                System.out.println("Relax");
                 d++;
                 time2 += .041;
             }
@@ -41,4 +41,30 @@ public class SpacedRep {
         memStrength++;
         return d;
     }
+
+    public int getHour() {
+        time = ZonedDateTime.now(zone);
+        return (time.getHour() + d) % 24 > 12 ? ((time.getHour() + d) % 24) - 12 : (time.getHour() + d) % 24;
+    }
+
+    public String getMinute() {
+        return time.getMinute() < 10 ? "0"+time.getMinute() : ""+time.getMinute();
+    }
+
+    public String getDay() {
+        if ((time.getHour() + d) / 24 == 1) {
+            return "tomorrow";
+        } else if ((time.getHour() + d) / 24 > 1) {
+            return "in " + (time.getHour() + d) / 24 + " days";
+        }
+        return "today";
+    }
+
+    public String getMeridiem() {
+        if ((time.getHour() + d) % 24 < 12) {
+            return "AM";
+        }
+        return "PM";
+    }
+
 }
