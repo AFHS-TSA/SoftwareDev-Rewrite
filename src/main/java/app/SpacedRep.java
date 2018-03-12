@@ -52,12 +52,7 @@ public class SpacedRep {
     }
 
     public String getDay() {
-        if ((time.getHour() + d) / 24 == 1) {
-            return "tomorrow";
-        } else if ((time.getHour() + d) / 24 > 1) {
-            return "in " + (time.getHour() + d) / 24 + " days";
-        }
-        return "today";
+        return "on "+time.getMonth()+ " " + (((time.getHour() + d) / 24)+time.getDayOfMonth());
     }
 
     public String getMeridiem() {
