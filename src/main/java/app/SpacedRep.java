@@ -1,15 +1,19 @@
 package main.java.app;
 
+import javafx.scene.control.Label;
+
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class SpacedRep {
     static double time1 = 0;
     static double time2 = .041;
-    static double memStrength = 1;
+    private static double memStrength = 1;
     static int n = 0;
     static int rN = 0;
     static int d = 0;
+    String name;
+    Label lbl = new Label();
 
     ZoneId zone = ZoneId.systemDefault();
     ZonedDateTime time = ZonedDateTime.now(zone);
@@ -18,7 +22,32 @@ public class SpacedRep {
 
     }
 
-    public static int SM2() {
+    public double getMemStrength() {
+        return memStrength;
+    }
+
+    public Label getLabel() {
+        return lbl;
+    }
+
+    public void setLabel(String str) {
+        lbl.setText(str);
+    }
+
+    public void getUpdate() {
+        this.SM2();
+        this.setLabel("Study " + this.getTitle() + " at " + this.getHour() + ":" + this.getMinute() + " " + this.getMeridiem()/* + " " + this.getDay()*/);
+    }
+
+    public void setTitle(String name) {
+        this.name = name;
+    }
+
+    public String getTitle() {
+        return this.name;
+    }
+
+    public static void SM2() {
         d = 0;
         n = 0;
         for (; n < 1;) {
@@ -39,12 +68,12 @@ public class SpacedRep {
 
         rN = n;
         memStrength++;
-        return d;
+        //return d;
     }
 
-    public int getHour() {
+    public String getHour() {
         time = ZonedDateTime.now(zone);
-        return (time.getHour() + d) % 24 > 12 ? ((time.getHour() + d) % 24) - 12 : (time.getHour() + d) % 24;
+        return (time.getHour() + d) % 24 > 12 ? ""+(((time.getHour() + d) % 24) - 12) : ""+(time.getHour() + d) % 24;
     }
 
     public String getMinute() {
