@@ -1,5 +1,6 @@
 package main.java.app.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class DrawerContentController {
     Button newstudy;
     @FXML
     JFXMasonryPane masonry;
+    @FXML
+    JFXButton pomodoro;
 
     public static ArrayList<SpacedRep> studySets = new ArrayList<SpacedRep>();
 
@@ -64,6 +67,23 @@ public class DrawerContentController {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void onPomClicked() {
+        try {
+            AnchorPane pomodoro = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Pomodoro.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(pomodoro);
+            primaryStage.initStyle(StageStyle.UNIFIED);
+            primaryStage.setHeight(300);
+            primaryStage.setWidth(300);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Pomodoro Timer");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import javafx.scene.control.Button?>
@@ -14,5 +15,6 @@
       <JFXCheckBox fx:id="checkStudy" layoutX="23.0" layoutY="422.0" onAction="#onCheck" text="Study" />
       <Button fx:id="newstudy" layoutX="119.0" layoutY="369.0" mnemonicParsing="false" onAction="#onNewClicked" text="New Study Set" />
       <JFXMasonryPane fx:id="masonry" layoutX="38.0" layoutY="519.0" prefHeight="293.0" prefWidth="223.0" />
+      <JFXButton fx:id="pomodoro" layoutX="119.0" layoutY="73.0" onAction="#onPomClicked" text="Pomodoro" />
    </children>
 </AnchorPane>

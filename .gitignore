@@ -1,10 +1,12 @@
 *~
 *.swp
 *.swo
+*.iml
 build/build/
 build/dist/
 build/externalLibs/
 build/project/
 build/projectRefs/
 bin/
+.idea/
 
