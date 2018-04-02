@@ -10,6 +10,7 @@ public class Var {
 
 	// Points for the rewards system
 	public static int points = 8100;
+	// Booleans to check if planets are bought
 	public static boolean mercury = false;
 	public static boolean venus = false;
 	public static boolean earth = false;
