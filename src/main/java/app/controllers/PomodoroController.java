@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import main.java.app.Var;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,6 +39,8 @@ public class PomodoroController {
                         timerlbl.setText(min + ":" + seconds);
                     }
                     if (totalSeconds == 0) {
+                        Var.points += 40;
+                        System.out.println("points: "+Var.points);
                         pom.cancel();
                     }
                 }

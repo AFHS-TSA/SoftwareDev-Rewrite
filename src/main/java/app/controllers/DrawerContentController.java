@@ -28,27 +28,19 @@ public class DrawerContentController {
     JFXMasonryPane masonry;
     @FXML
     JFXButton pomodoro;
+    @FXML
+    JFXButton rewards;
+
+    int memStrength = 1;
 
     public static ArrayList<SpacedRep> studySets = new ArrayList<SpacedRep>();
 
     @FXML
     private void onCheck() {
-        JFXMasonryPane root = masonry;
-
         if (checkStudy.isSelected()) {
-            //studySets.get(0).SM2();
-            //checkStudy.setText("Study " + studySets.get(0).getTitle() + " at " + studySets.get(0).getHour() + ":" + studySets.get(0).getMinute() + " " + studySets.get(0).getMeridiem() + " " + studySets.get(0).getDay());
-            root.getChildren().clear();
-            for (int i = 0; i < studySets.size(); i++) {
-                studySets.get(i).getUpdate();
-                System.out.println(studySets.get(i).getMemStrength());
-                root.getChildren().add(studySets.get(i).getLabel());
-            }
+            studySets.get(0).SM2(memStrength++);
+            checkStudy.setText("Study at " + studySets.get(0).getHour() + ":" + studySets.get(0).getMinute() + " " + studySets.get(0).getMeridiem() + " " + studySets.get(0).getDay());
         }
-        //studySets.get(0).getUpdate();
-        //JFXMasonryPane root = masonry;
-        //Label lbl = new Label("hey                    ");
-        //root.getChildren().add(lbl);
     }
 
     @FXML
@@ -80,6 +72,23 @@ public class DrawerContentController {
             primaryStage.setWidth(300);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Pomodoro Timer");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onRewardsClicked() {
+        try {
+            AnchorPane rewards = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Rewards.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(rewards);
+            primaryStage.initStyle(StageStyle.UNIFIED);
+            primaryStage.setHeight(750);
+            primaryStage.setWidth(1215);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("My Galaxy");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

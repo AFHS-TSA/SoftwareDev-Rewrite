@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="background" maxHeight="802.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.RewardsController">
+   <children>
+      <ImageView fx:id="earth" fitHeight="122.0" fitWidth="164.0" layoutX="334.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Earth_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jupiter" fitHeight="150.0" fitWidth="220.0" layoutX="647.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Jupiter_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mars" fitHeight="68.0" fitWidth="66.0" layoutX="498.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Mars_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mercury" fitHeight="46.0" fitWidth="48.0" layoutX="200.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Mercury_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="venus" fitHeight="95.0" fitWidth="125.0" layoutX="259.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Venus_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="uranus" fitHeight="106.0" fitWidth="104.0" layoutX="832.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Uranus_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="neptune" fitHeight="121.0" fitWidth="126.0" layoutX="967.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Neptune_100x100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
+      <Accordion layoutX="998.0" layoutY="-6.0">
+        <panes>
+          <TitledPane animated="false" text="Planets">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="mercurybtn" layoutX="14.0" layoutY="27.0" minWidth="169.0" mnemonicParsing="false" onAction="#onMercuryClicked" text="Purchase Mercury (500 pts)" />
+                        <Button fx:id="venusbtn" layoutX="14.0" layoutY="52.0" minWidth="169.0" mnemonicParsing="false" onAction="#onVenusClicked" prefHeight="25.0" prefWidth="161.0" text="Purchase Venus (700 pts)" />
+                        <Button fx:id="uranusbtn" layoutX="14.0" layoutY="179.0" minWidth="169.0" mnemonicParsing="false" onAction="#onUranusClicked" text="Purchase Uranus (1700 pts)" />
+                        <Button fx:id="earthbtn" layoutX="14.0" layoutY="78.0" minWidth="169.0" mnemonicParsing="false" onAction="#onEarthClicked" prefHeight="25.0" prefWidth="150.0" text="Purchase Earth (900 pts)" />
+                        <Button fx:id="marsbtn" layoutX="14.0" layoutY="103.0" minWidth="169.0" mnemonicParsing="false" onAction="#onMarsClicked" text="Purchase Mars (1100 pts)" />
+                        <Button fx:id="jupiterbtn" layoutX="14.0" layoutY="128.0" minWidth="169.0" mnemonicParsing="false" onAction="#onJupiterClicked" text="Purchase Jupiter (1300 pts)" />
+                        <Button fx:id="saturnbtn" layoutX="14.0" layoutY="154.0" minWidth="169.0" mnemonicParsing="false" onAction="#onSaturnClicked" text="Purchase Saturn (1500 pts)" />
+                        <Button fx:id="neptunebtn" layoutX="14.0" layoutY="204.0" minWidth="169.0" mnemonicParsing="false" onAction="#onNeptuneClicked" text="Purchase Neptune (1900 pts)" />
+                        <Button fx:id="plutobtn" layoutX="14.0" layoutY="229.0" minWidth="169.0" mnemonicParsing="false" onAction="#onPlutoClicked" text="Purchase Pluto (??? pts)" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Man-Made">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Other">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+      <Label fx:id="pointslbl" layoutX="1109.0" layoutY="678.0" text="Points: " textFill="WHITE" />
+   </children>
+</AnchorPane>

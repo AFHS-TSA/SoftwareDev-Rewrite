@@ -15,7 +15,7 @@ public class NewStudySetController {
     @FXML
     private void onDoneClicked() {
         SpacedRep set = new SpacedRep();
-        set.setTitle(setName.getText());
+        //set.setTitle(setName.getText());
         DrawerContentController.studySets.add(set);
     }
 

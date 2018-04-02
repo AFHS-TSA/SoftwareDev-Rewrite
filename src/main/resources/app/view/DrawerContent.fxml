@@ -16,5 +16,6 @@
       <Button fx:id="newstudy" layoutX="119.0" layoutY="369.0" mnemonicParsing="false" onAction="#onNewClicked" text="New Study Set" />
       <JFXMasonryPane fx:id="masonry" layoutX="38.0" layoutY="519.0" prefHeight="293.0" prefWidth="223.0" />
       <JFXButton fx:id="pomodoro" layoutX="119.0" layoutY="73.0" onAction="#onPomClicked" text="Pomodoro" />
+      <JFXButton fx:id="rewards" layoutX="114.0" layoutY="119.0" onAction="#onRewardsClicked" text="My Galaxy" />
    </children>
 </AnchorPane>
