@@ -20,19 +20,19 @@
 		<mkdir dir="externalLibs" />
 	
 		<copy todir="externalLibs">
-			<fileset dir="/home/jason/Documents/Dependencies">
+			<fileset dir="${user.home}/Documents/Dependencies">
 				<filename name="controlsfx-8.40.13.jar"/>
 			</fileset>
 		</copy>
 		<copy todir="externalLibs">
-			<fileset dir="/home/jason/Documents/Dependencies">
+			<fileset dir="${user.home}/Documents/Dependencies">
 				<filename name="jfoenix-8.0.1.jar"/>
 			</fileset>
 		</copy>
 	
 		<mkdir dir="project" />
 		<copy todir="project">
-			<fileset dir="/home/jason/Github/workspace/SoftwareDev-Rewrite">
+			<fileset dir="${user.home}/jobs/SoftwareDev-Rewrite/workspace/">
 				<include name="src/**" />
 			</fileset>
 		</copy>
@@ -126,3 +126,5 @@
 	
 	</target>
 </project>
+
+
