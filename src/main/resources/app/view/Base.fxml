@@ -2,7 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,8 +13,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView fx:id="treeView" layoutX="159.0" layoutY="3.0" prefHeight="943.0" prefWidth="460.0" />
-            <JFXButton fx:id="newAssign" layoutX="14.0" layoutY="14.0" onAction="#onNewClicked" prefHeight="25.0" prefWidth="134.0" text="+New Assignment" />
+            <JFXListView fx:id="listView" layoutX="142.0" layoutY="10.0" prefHeight="917.0" prefWidth="616.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
+            <JFXButton fx:id="newAssign" layoutX="14.0" layoutY="14.0" onAction="#onNewClicked" prefHeight="25.0" prefWidth="134.0" text="+New Assignment" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

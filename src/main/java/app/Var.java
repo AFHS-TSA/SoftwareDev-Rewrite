@@ -1,6 +1,7 @@
 package main.java.app;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Var {
 	
@@ -23,5 +24,5 @@ public class Var {
 	public static boolean neptune = false;
 
 	// ArrayList containing the assignments
-	public static ArrayList<Assignments> assignmentsList;
+	public static ObservableList<Assignments> assignmentsList = FXCollections.observableArrayList();
 }

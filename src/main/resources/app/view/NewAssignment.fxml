@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.NewAssignmentController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="511.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.NewAssignmentController">
    <children>
-      <Label alignment="CENTER" layoutX="182.0" layoutY="40.0" text="New Assignment" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="182.0" layoutY="40.0" text="New Assignment" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="setTitle" layoutX="27.0" layoutY="112.0" promptText="Enter Assignment Name" />
-      <JFXDatePicker fx:id="setDate" layoutX="183.0" layoutY="112.0" promptText="Select Due Date" />
-      <JFXComboBox fx:id="setPriority" layoutX="371.0" layoutY="112.0" promptText="Select Priority" />
-      <JFXButton fx:id="add" layoutX="218.0" layoutY="167.0" onAction="#onAddClicked" text="Add" />
-      <JFXButton fx:id="Cancel" layoutX="256.0" layoutY="167.0" onAction="#onCancelClicked" text="Cancel" />
+      <JFXTextField fx:id="setTitle" layoutX="14.0" layoutY="112.0" promptText=" Enter Assignment Name" style="-fx-background-color: #FFFFFF;" unFocusColor="#ffffff00" />
+      <JFXDatePicker fx:id="setDate" defaultColor="#303030" layoutX="170.0" layoutY="112.0" promptText=" Select Due Date" style="-fx-background-color: #FFFFFF;" />
+      <JFXComboBox fx:id="setPriority" layoutX="363.0" layoutY="112.0" promptText=" Select Priority" style="-fx-background-color: #FFFFFF;" unFocusColor="#ffffff00" />
+      <JFXButton fx:id="add" layoutX="218.0" layoutY="167.0" onAction="#onAddClicked" text="Add" textFill="WHITE" />
+      <JFXButton fx:id="Cancel" layoutX="256.0" layoutY="167.0" onAction="#onCancelClicked" text="Cancel" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -22,7 +22,7 @@ public class Main extends Application {
 		   	primaryStage.setHeight(Var.height);
 			primaryStage.setWidth(Var.width);
 			primaryStage.setScene(scene);
-			primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocusLogo.png"));
+			primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocusLogo_3.png"));
 			primaryStage.show();
 			
 			// Listener for minimum width and height 

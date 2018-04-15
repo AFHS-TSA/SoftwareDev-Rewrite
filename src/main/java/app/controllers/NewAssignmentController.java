@@ -38,7 +38,7 @@ public class NewAssignmentController implements Initializable {
 
     @FXML
     private void onAddClicked() {
-        Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")), setPriority.getId()));
+        Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.toString(), setPriority.getId()));
     }
 
     @Override

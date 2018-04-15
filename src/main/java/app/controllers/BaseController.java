@@ -12,6 +12,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.sun.javafx.scene.SceneHelper;
 import com.sun.javafx.stage.StageHelper;
 
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,16 +20,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import main.java.app.Assignments;
+import main.java.app.Var;
 
 public class BaseController implements Initializable {
 
@@ -38,12 +43,13 @@ public class BaseController implements Initializable {
 	private BorderPane basePane;
 	@FXML
 	private AnchorPane rightNavDrawer;
+	@FXML
+	private JFXListView listView;
 	/*@FXML
 	private JFXDrawer leftNavDrawer;
 	@FXML
 	private JFXHamburger navBurger;*/
-	@FXML
-	private JFXTreeTableView<Assignments> treeView;
+
 	
     /*private void Drawer() {
         try {    	
@@ -91,47 +97,23 @@ public class BaseController implements Initializable {
 		}
 	}
 
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		JFXTreeTableColumn<Assignments, String> titleCn = new JFXTreeTableColumn<>("Name");
-		titleCn.setPrefWidth(208);
-		titleCn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Assignments, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Assignments, String> param) {
-				return param.getValue().getValue().title;
-			}
-		});
-
-		JFXTreeTableColumn<Assignments, String> dueDateCn = new JFXTreeTableColumn<>("Due Date");
-		dueDateCn.setPrefWidth(150);
-		dueDateCn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Assignments, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Assignments, String> param) {
-				return param.getValue().getValue().dueDate;
-			}
-		});
-
-		JFXTreeTableColumn<Assignments, String> priorityCn = new JFXTreeTableColumn<>("Priority");
-		priorityCn.setPrefWidth(100);
-		priorityCn.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Assignments, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Assignments, String> param) {
-				return param.getValue().getValue().priority;
-			}
-		});
-
-		ObservableList<Assignments> assignments = FXCollections.observableArrayList();
-		assignments.add(new Assignments("Math HW", "Today", "High"));
-		assignments.add(new Assignments("POE HW", "Today", "High"));
-		assignments.add(new Assignments("AP Gov HW", "Tomorrow", "High"));
-
-		final TreeItem<Assignments> root = new RecursiveTreeItem<Assignments>(assignments, RecursiveTreeObject::getChildren);
-
-		treeView.getColumns().setAll(titleCn, dueDateCn, priorityCn);
-		treeView.setRoot(root);
-		treeView.setShowRoot(false);
-
+		for (int i = 0; i < 5; i++) {
+			CheckBox chkBx = new CheckBox("Assignment " + i);
+			chkBx.setTextFill(Color.rgb(255, 255, 255));
+			listView.getItems().add(chkBx);
+			chkBx.selectedProperty().addListener(new ChangeListener<Boolean>() {
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					if (chkBx.isSelected()) {
+						listView.getItems().remove(chkBx);
+					}
+				}
+			});
+		}
 
     	//Drawer();
 		rightNavDrawer.setId("shrink");
