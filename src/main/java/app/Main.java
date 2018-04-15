@@ -4,12 +4,12 @@ import java.util.concurrent.TimeUnit;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
-
 
 public class Main extends Application {
 	@Override
@@ -22,6 +22,7 @@ public class Main extends Application {
 		   	primaryStage.setHeight(Var.height);
 			primaryStage.setWidth(Var.width);
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocusLogo.png"));
 			primaryStage.show();
 			
 			// Listener for minimum width and height 

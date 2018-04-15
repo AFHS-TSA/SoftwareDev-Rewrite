@@ -1,5 +1,7 @@
 package main.java.app;
 
+import java.util.ArrayList;
+
 public class Var {
 	
 	// Base Frame width and height props
@@ -19,4 +21,7 @@ public class Var {
 	public static boolean saturn = false;
 	public static boolean uranus = false;
 	public static boolean neptune = false;
+
+	// ArrayList containing the assignments
+	public static ArrayList<Assignments> assignmentsList;
 }

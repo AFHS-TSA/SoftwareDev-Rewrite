@@ -14,9 +14,6 @@ public class SpacedRep {
     ZoneId zone = ZoneId.systemDefault();
     ZonedDateTime time = ZonedDateTime.now(zone);
 
-    public SpacedRep() {
-
-    }
 
     public static int SM2(int memStrength) {
         //d = 0;

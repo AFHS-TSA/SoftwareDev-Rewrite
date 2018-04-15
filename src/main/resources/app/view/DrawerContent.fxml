@@ -8,14 +8,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="940.0" minWidth="300.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.DrawerContentController">
+<AnchorPane minHeight="940.0" minWidth="300.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.DrawerContentController">
    <children>
-      <Label layoutX="126.0" layoutY="259.0" text="Drawer" />
+      <Label layoutX="131.0" layoutY="251.0" text="Drawer" textFill="#ffffffb2" />
       <TextField layoutX="76.0" layoutY="165.0" />
-      <JFXCheckBox fx:id="checkStudy" layoutX="23.0" layoutY="422.0" onAction="#onCheck" text="Study" />
+      <JFXCheckBox fx:id="checkStudy" layoutX="23.0" layoutY="422.0" onAction="#onCheck" text="Study" textFill="#ffffffb2" unCheckedColor="#ffffffb2" />
       <Button fx:id="newstudy" layoutX="119.0" layoutY="369.0" mnemonicParsing="false" onAction="#onNewClicked" text="New Study Set" />
       <JFXMasonryPane fx:id="masonry" layoutX="38.0" layoutY="519.0" prefHeight="293.0" prefWidth="223.0" />
-      <JFXButton fx:id="pomodoro" layoutX="119.0" layoutY="73.0" onAction="#onPomClicked" text="Pomodoro" />
-      <JFXButton fx:id="rewards" layoutX="114.0" layoutY="119.0" onAction="#onRewardsClicked" text="My Galaxy" />
+      <JFXButton fx:id="pomodoro" layoutX="119.0" layoutY="73.0" onAction="#onPomClicked" text="Pomodoro" textFill="#ffffffb2" />
+      <JFXButton fx:id="rewards" layoutX="114.0" layoutY="119.0" onAction="#onRewardsClicked" text="My Galaxy" textFill="#ffffffb2" />
    </children>
 </AnchorPane>
