@@ -7,14 +7,15 @@ import javafx.scene.control.Label;
 import java.time.DayOfWeek;
 
 public class Assignments extends RecursiveTreeObject<Assignments> {
-    public SimpleStringProperty title;
-    public SimpleStringProperty dueDate;
-    public SimpleStringProperty priority;
+    public String title;
+    public String dueDate;
+    public String priority;
 
     public Assignments(String title, String dueDate, String priority) {
-        this.title = new SimpleStringProperty(title);
-        this.dueDate = new SimpleStringProperty(dueDate);
-        this.priority = new SimpleStringProperty(priority);
+        this.title = title;
+        this.dueDate = dueDate;
+        this.priority = priority;
     }
+
 
 }

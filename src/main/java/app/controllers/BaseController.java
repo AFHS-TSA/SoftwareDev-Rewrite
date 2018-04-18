@@ -2,8 +2,8 @@ package main.java.app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -14,37 +14,42 @@ import com.sun.javafx.stage.StageHelper;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
+
 import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Callback;
+
+import javafx.scene.text.Font;
+import javafx.util.Duration;
 import main.java.app.Assignments;
+import main.java.app.Methods;
 import main.java.app.Var;
+import org.controlsfx.control.Notifications;
 
 public class BaseController implements Initializable {
 
-	@FXML
-	private JFXButton newAssign;
 	@FXML
 	private BorderPane basePane;
 	@FXML
 	private AnchorPane rightNavDrawer;
 	@FXML
 	private JFXListView listView;
+	@FXML
+	private JFXButton addNew;
+	@FXML
+	private JFXTextField setTitle;
+	@FXML
+	private JFXComboBox setPriority;
+	@FXML
+	private JFXDatePicker setDueDate;
+	@FXML
+	public Label points;
 	/*@FXML
 	private JFXDrawer leftNavDrawer;
 	@FXML
@@ -81,38 +86,73 @@ public class BaseController implements Initializable {
     }*/
 
     @FXML
-	private void onNewClicked() {
-		try {
-			AnchorPane assignment = FXMLLoader.load(getClass().getResource("/main/resources/app/view/NewAssignment.fxml"));
-			Stage primaryStage = new Stage();
-			Scene scene = new Scene(assignment);
-			primaryStage.initStyle(StageStyle.UNIFIED);
-			primaryStage.setHeight(250);
-			primaryStage.setWidth(511);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("New Assignment");
-			primaryStage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private void onNewAdded() {
+		Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")), setPriority.getSelectionModel().getSelectedItem().toString()));
+		updateAssign(Var.assignmentsList.size() - 1);
 	}
 
+	public void updateAssign(int i) {
+			JFXCheckBox chkBx = new JFXCheckBox(Var.assignmentsList.get(i).title + "");
+			Label due = new Label("Due: " + Var.assignmentsList.get(i).dueDate);
+			due.setTextFill(Color.rgb(255, 255, 255, .7));
+			Label pri = new Label("Priority: " + Var.assignmentsList.get(i).priority);
+			if (Var.assignmentsList.get(i).priority.equals("High")) {
+				pri.setTextFill(Color.rgb(255, 0, 0, .7));
+			} else if (Var.assignmentsList.get(i).priority.equals("Medium")) {
+				pri.setTextFill(Color.rgb(255, 165, 0, .7));
+			} else if (Var.assignmentsList.get(i).priority.equals("Low")) {
+				pri.setTextFill(Color.rgb(255, 255, 0, .7));
+			} else {
+				pri.setTextFill(Color.rgb(255, 255, 255, .7));
+			}
+
+			chkBx.setTextFill(Color.rgb(255, 255, 255));
+			chkBx.setFont(Font.font("System", 18));
+			chkBx.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if (chkBx.isSelected()) {
+					listView.getItems().remove(chkBx);
+					listView.getItems().remove(due);
+					listView.getItems().remove(pri);
+					Var.assignmentsList.remove(i);
+					Notifications.create()
+							.title("Assignment Completed")
+							.darkStyle()
+							.text(chkBx.getText() + " completed")
+							.hideAfter(Duration.seconds(5))
+							.showConfirm();
+					Var.points += 25;
+					updateLabel();
+					//DrawerContentController dc = new DrawerContentController();
+					//dc.update();
+				}
+			}
+		});
+
+			listView.getItems().add(chkBx);
+			listView.getItems().add(due);
+			listView.getItems().add(pri);
+
+
+	}
+
+	public void updateLabel() {
+    	Methods.setPoints();
+		Methods.updatePoints();
+    	points.setText("Points: " + Var.points);
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		for (int i = 0; i < 5; i++) {
-			CheckBox chkBx = new CheckBox("Assignment " + i);
-			chkBx.setTextFill(Color.rgb(255, 255, 255));
-			listView.getItems().add(chkBx);
-			chkBx.selectedProperty().addListener(new ChangeListener<Boolean>() {
-				@Override
-				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-					if (chkBx.isSelected()) {
-						listView.getItems().remove(chkBx);
-					}
-				}
-			});
+		setPriority.getItems().addAll("Low", "Medium", "High");
+		Methods.updatePoints();
+
+		updateLabel();
+
+		for (int i = 0; i < Var.assignmentsList.size(); i++) {
+			updateAssign(i);
 		}
 
     	//Drawer();
@@ -134,7 +174,7 @@ public class BaseController implements Initializable {
 			}
 		
         	// Change the drawer layout based on the size of the window.
-        	/*if(basePane.getWidth() < 875) {
+        	/*f(basePane.getWidth() < 875) {
         		navBurger.setVisible(true);
         		leftNavDrawer.setVisible(true);
         		basePane.getChildren().remove(rightNavDrawer);

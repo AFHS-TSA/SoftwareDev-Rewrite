@@ -3,8 +3,10 @@ package main.java.app.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXMasonryPane;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,24 +14,41 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.java.app.Methods;
 import main.java.app.SpacedRep;
 import main.java.app.Var;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
-public class DrawerContentController {
+public class DrawerContentController implements Initializable{
 
     @FXML
     JFXCheckBox checkStudy;
     @FXML
-    Button newstudy;
-    @FXML
-    JFXMasonryPane masonry;
+    JFXButton newstudy;
+
     @FXML
     JFXButton pomodoro;
     @FXML
     JFXButton rewards;
+    @FXML
+    public Label points;
+    @FXML
+    public Label clock;
+    @FXML
+    public Label date;
 
     int memStrength = 1;
 
@@ -95,4 +114,23 @@ public class DrawerContentController {
         }
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ZoneId zone = ZoneId.systemDefault();
+        Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    ZonedDateTime time = ZonedDateTime.now(zone);
+                    clock.setText(Methods.getHour(time) + ":" + Methods.getMinute(time) + " " + Methods.getMeridiem(time));
+                    date.setText(Methods.getMonth(time) + " " + time.getDayOfMonth());
+                });
+            }
+        }, 1000, 1000);
+
+
+    }
 }

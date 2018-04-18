@@ -5,13 +5,19 @@ import com.jfoenix.controls.JFXSlider;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import main.java.app.Methods;
 import main.java.app.Var;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PomodoroController {
+public class PomodoroController implements Initializable {
     @FXML
     Label timerlbl;
     @FXML
@@ -20,6 +26,8 @@ public class PomodoroController {
     JFXButton stop;
     @FXML
     JFXSlider setTime;
+    @FXML
+    AnchorPane anchorPane;
 
     int totalSeconds;
 
@@ -40,7 +48,7 @@ public class PomodoroController {
                     }
                     if (totalSeconds == 0) {
                         Var.points += 40;
-                        System.out.println("points: "+Var.points);
+                        Methods.updatePoints();
                         pom.cancel();
                     }
                 }
@@ -59,5 +67,12 @@ public class PomodoroController {
         pom.cancel();
         pom.purge();
         timerlbl.setText("--:--");
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setTime.applyCss();
     }
 }

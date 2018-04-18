@@ -3,6 +3,8 @@ package main.java.app;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 public class Var {
 	
 	// Base Frame width and height props
@@ -24,5 +26,5 @@ public class Var {
 	public static boolean neptune = false;
 
 	// ArrayList containing the assignments
-	public static ObservableList<Assignments> assignmentsList = FXCollections.observableArrayList();
+	public static ArrayList<Assignments> assignmentsList = new ArrayList<>();
 }

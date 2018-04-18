@@ -217,16 +217,6 @@ public class RewardsController {
     public void initialize() {
         pref = Preferences.userNodeForPackage(RewardsController.class);
 
-        Var.mercury = pref.getBoolean("mercury", false);
-        Var.venus = pref.getBoolean("venus", false);
-        Var.earth = pref.getBoolean("earth", false);
-        Var.mars = pref.getBoolean("mars", false);
-        Var.jupiter = pref.getBoolean("jupiter", false);
-        Var.saturn = pref.getBoolean("saturn", false);
-        Var.uranus = pref.getBoolean("uranus", false);
-        Var.neptune = pref.getBoolean("neptune", false);
-        checkPlanets();
-
         Var.points = pref.getInt("points", 1800);
         pointslbl.setText("Points: " + Var.points);
 
