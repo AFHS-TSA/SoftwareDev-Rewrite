@@ -10,10 +10,19 @@ public class SpacedRep {
     static int n = 0;
     static int rN = 0;
     static int d = 0;
+    String title;
 
     ZoneId zone = ZoneId.systemDefault();
     ZonedDateTime time = ZonedDateTime.now(zone);
 
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public static int SM2(int memStrength) {
         //d = 0;

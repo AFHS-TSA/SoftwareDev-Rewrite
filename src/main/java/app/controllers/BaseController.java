@@ -49,7 +49,13 @@ public class BaseController implements Initializable {
 	@FXML
 	private JFXDatePicker setDueDate;
 	@FXML
+	private JFXComboBox setType;
+	@FXML
 	public Label points;
+	@FXML
+	private Label quote;
+	@FXML
+	private JFXButton newQuote;
 	/*@FXML
 	private JFXDrawer leftNavDrawer;
 	@FXML
@@ -86,8 +92,18 @@ public class BaseController implements Initializable {
     }*/
 
     @FXML
+	private void onRefresh() {
+    	updateLabel();
+	}
+
+    @FXML
+	private void onNewQuote() {
+    	updateQuote();
+	}
+
+    @FXML
 	private void onNewAdded() {
-		Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")), setPriority.getSelectionModel().getSelectedItem().toString()));
+		Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")), setPriority.getSelectionModel().getSelectedItem().toString(), setType.getSelectionModel().getSelectedItem().toString()));
 		updateAssign(Var.assignmentsList.size() - 1);
 	}
 
@@ -95,6 +111,16 @@ public class BaseController implements Initializable {
 			JFXCheckBox chkBx = new JFXCheckBox(Var.assignmentsList.get(i).title + "");
 			Label due = new Label("Due: " + Var.assignmentsList.get(i).dueDate);
 			due.setTextFill(Color.rgb(255, 255, 255, .7));
+			Label type = new Label(Var.assignmentsList.get(i).type + " Assignment");
+			type.setTextFill(Color.rgb(255, 255, 255, .7));
+			if (Var.assignmentsList.get(i).type.equals("Major")) {
+				type.setStyle("-fx-font-weight: bold");
+			} else if (Var.assignmentsList.get(i).type.equals("Minor")) {
+				//type.setStyle("-fx-font-weight: bold");
+			} else if (Var.assignmentsList.get(i).type.equals("Regular")) {
+				type.setStyle("-fx-font-style: italic");
+			}
+
 			Label pri = new Label("Priority: " + Var.assignmentsList.get(i).priority);
 			if (Var.assignmentsList.get(i).priority.equals("High")) {
 				pri.setTextFill(Color.rgb(255, 0, 0, .7));
@@ -114,6 +140,7 @@ public class BaseController implements Initializable {
 				if (chkBx.isSelected()) {
 					listView.getItems().remove(chkBx);
 					listView.getItems().remove(due);
+					listView.getItems().remove(type);
 					listView.getItems().remove(pri);
 					Var.assignmentsList.remove(i);
 					Notifications.create()
@@ -132,6 +159,7 @@ public class BaseController implements Initializable {
 
 			listView.getItems().add(chkBx);
 			listView.getItems().add(due);
+			listView.getItems().add(type);
 			listView.getItems().add(pri);
 
 
@@ -143,13 +171,20 @@ public class BaseController implements Initializable {
     	points.setText("Points: " + Var.points);
 	}
 
+	public void updateQuote() {
+    	quote.setText(Methods.getQuote());
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		setPriority.getItems().addAll("Low", "Medium", "High");
+		setType.getItems().addAll("Major", "Minor", "Regular");
 		Methods.updatePoints();
 
 		updateLabel();
+
+		quote.setText(Methods.getQuote());
 
 		for (int i = 0; i < Var.assignmentsList.size(); i++) {
 			updateAssign(i);

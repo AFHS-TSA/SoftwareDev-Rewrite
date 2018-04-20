@@ -2,6 +2,7 @@ package main.java.app.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import main.java.app.Methods;
@@ -49,6 +51,8 @@ public class DrawerContentController implements Initializable{
     public Label clock;
     @FXML
     public Label date;
+    @FXML
+    public JFXListView upcoming;
 
     int memStrength = 1;
 
@@ -58,7 +62,7 @@ public class DrawerContentController implements Initializable{
     private void onCheck() {
         if (checkStudy.isSelected()) {
             studySets.get(0).SM2(memStrength++);
-            checkStudy.setText("Study at " + studySets.get(0).getHour() + ":" + studySets.get(0).getMinute() + " " + studySets.get(0).getMeridiem() + " " + studySets.get(0).getDay());
+            checkStudy.setText("Study " + studySets.get(0).getTitle() + " at " + studySets.get(0).getHour() + ":" + studySets.get(0).getMinute() + " " + studySets.get(0).getMeridiem() + " " + studySets.get(0).getDay());
         }
     }
 
@@ -124,12 +128,20 @@ public class DrawerContentController implements Initializable{
             @Override
             public void run() {
                 Platform.runLater(() -> {
+                    upcoming.getItems().clear();
                     ZonedDateTime time = ZonedDateTime.now(zone);
                     clock.setText(Methods.getHour(time) + ":" + Methods.getMinute(time) + " " + Methods.getMeridiem(time));
                     date.setText(Methods.getMonth(time) + " " + time.getDayOfMonth());
+
+                    for (int i = 0; i < Methods.getUrgent(time).size(); i++) {
+                        Label lbl = new Label(Methods.getUrgent(time).get(i) + "");
+                        lbl.setTextFill(Color.rgb(255, 255, 255));
+                        upcoming.getItems().add(lbl);
+                    }
                 });
             }
-        }, 1000, 1000);
+        }, 10, 1000);
+
 
 
     }
