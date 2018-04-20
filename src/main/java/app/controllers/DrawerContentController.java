@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,12 +37,9 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class DrawerContentController implements Initializable{
-
-    @FXML
-    JFXCheckBox checkStudy;
+    
     @FXML
     JFXButton newstudy;
-
     @FXML
     JFXButton pomodoro;
     @FXML
@@ -53,18 +52,13 @@ public class DrawerContentController implements Initializable{
     public Label date;
     @FXML
     public JFXListView upcoming;
+    @FXML
+    public JFXListView studysets;
 
-    int memStrength = 1;
+    //int memStrength = 1;
 
     public static ArrayList<SpacedRep> studySets = new ArrayList<SpacedRep>();
 
-    @FXML
-    private void onCheck() {
-        if (checkStudy.isSelected()) {
-            studySets.get(0).SM2(memStrength++);
-            checkStudy.setText("Study " + studySets.get(0).getTitle() + " at " + studySets.get(0).getHour() + ":" + studySets.get(0).getMinute() + " " + studySets.get(0).getMeridiem() + " " + studySets.get(0).getDay());
-        }
-    }
 
     @FXML
     private void onNewClicked() {
@@ -118,6 +112,26 @@ public class DrawerContentController implements Initializable{
         }
     }
 
+    public void updateSets(int i) {
+
+            JFXCheckBox cb = new JFXCheckBox("Study " + Var.studySets.get(i).getTitle() + " at " + Var.studySets.get(i).getHour() + ":" + Var.studySets.get(i).getMinute() + " " + Var.studySets.get(i).getMeridiem() + " " + Var.studySets.get(i).getDay());
+
+            cb.setTextFill(Color.rgb(255, 255, 255));
+            cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    if (cb.isSelected()) {
+                        Var.studySets.get(i).SM2();
+                        cb.setText("Study " + Var.studySets.get(i).getTitle() + " at " + Var.studySets.get(i).getHour() + ":" + Var.studySets.get(i).getMinute() + " " + Var.studySets.get(i).getMeridiem() + " " + Var.studySets.get(i).getDay());
+                        Var.points += 15;
+                        Methods.setPoints();
+                        cb.setSelected(false);
+                    }
+                }
+            });
+            studysets.getItems().add(cb);
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -129,6 +143,7 @@ public class DrawerContentController implements Initializable{
             public void run() {
                 Platform.runLater(() -> {
                     upcoming.getItems().clear();
+                    studysets.getItems().clear();
                     ZonedDateTime time = ZonedDateTime.now(zone);
                     clock.setText(Methods.getHour(time) + ":" + Methods.getMinute(time) + " " + Methods.getMeridiem(time));
                     date.setText(Methods.getMonth(time) + " " + time.getDayOfMonth());
@@ -138,6 +153,13 @@ public class DrawerContentController implements Initializable{
                         lbl.setTextFill(Color.rgb(255, 255, 255));
                         upcoming.getItems().add(lbl);
                     }
+
+                    for (int i = 0; i < Var.studySets.size(); i++) {
+
+                        updateSets(i);
+                    }
+
+
                 });
             }
         }, 10, 1000);

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.app.SpacedRep;
+import main.java.app.Var;
 
 public class NewStudySetController {
 
@@ -20,7 +21,7 @@ public class NewStudySetController {
     private void onDoneClicked() {
         SpacedRep set = new SpacedRep();
         set.setTitle(setName.getText());
-        DrawerContentController.studySets.add(set);
+        Var.studySets.add(set);
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         stage.close();
     }

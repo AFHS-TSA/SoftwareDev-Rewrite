@@ -4,12 +4,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class SpacedRep {
-    static double time1 = 0;
-    static double time2 = .041;
-    static double memStrength = 1;
-    static int n = 0;
-    static int rN = 0;
-    static int d = 0;
+    double time1 = 0;
+    double time2 = .041;
+    double memStrength = 1;
+    int n = 0;
+    int rN = 0;
+    int d = 0;
     String title;
 
     ZoneId zone = ZoneId.systemDefault();
@@ -24,7 +24,7 @@ public class SpacedRep {
         this.title = title;
     }
 
-    public static int SM2(int memStrength) {
+    public int SM2() {
         //d = 0;
         n = 0;
         for (; n < 1;) {
@@ -33,7 +33,7 @@ public class SpacedRep {
             double y1 = Math.exp(exp1);
             double y2 = Math.exp(exp2);
             if (y1 - y2 > .3) {
-                //memStrength++;
+                memStrength++;
                 time2 = .041;
                 n++;
             } else {
