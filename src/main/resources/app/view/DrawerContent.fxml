@@ -6,29 +6,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="900.0" minHeight="900.0" minWidth="300.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.DrawerContentController">
+<AnchorPane maxHeight="627.0" minHeight="600.0" minWidth="300.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.DrawerContentController">
    <children>
-      <JFXButton fx:id="pomodoro" buttonType="RAISED" layoutX="97.0" layoutY="671.0" onAction="#onPomClicked" style="-fx-background-color: #212121;" text="Pomodoro Timer" textFill="#ffffffb2" />
-      <JFXButton fx:id="rewards" buttonType="RAISED" layoutX="115.0" layoutY="743.0" onAction="#onRewardsClicked" style="-fx-background-color: #212121;" text="My Galaxy" textFill="#ffffffb2" />
-      <JFXButton fx:id="newstudy" buttonType="RAISED" layoutX="104.0" layoutY="592.0" onAction="#onNewClicked" style="-fx-background-color: #212121;" text="New Study Set" textFill="#ffffffb2" />
-      <Label fx:id="clock" layoutX="83.0" layoutY="38.0" text="00:00 AM" textFill="WHITE">
+      <JFXButton fx:id="pomodoro" buttonType="RAISED" layoutX="98.0" layoutY="487.0" onAction="#onPomClicked" style="-fx-background-color: #212121;" text="Pomodoro Timer" textFill="#ffffffb2" />
+      <JFXButton fx:id="rewards" buttonType="RAISED" layoutX="115.0" layoutY="541.0" onAction="#onRewardsClicked" style="-fx-background-color: #212121;" text="My Galaxy" textFill="#ffffffb2" />
+      <JFXButton fx:id="newstudy" buttonType="RAISED" layoutX="103.0" layoutY="429.0" onAction="#onNewClicked" style="-fx-background-color: #212121;" text="New Study Set" textFill="#ffffffb2" />
+      <Label fx:id="clock" layoutX="83.0" layoutY="14.0" text="00:00 AM" textFill="WHITE">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="date" layoutX="107.0" layoutY="102.0" text="______ __" textFill="WHITE">
+      <Label fx:id="date" layoutX="107.0" layoutY="61.0" text="______ __" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXListView fx:id="upcoming" layoutX="26.0" layoutY="196.0" prefHeight="162.0" prefWidth="248.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
-      <Label layoutX="105.0" layoutY="161.0" text="Due Today:" textFill="WHITE">
+      <JFXListView fx:id="upcoming" layoutX="27.0" layoutY="138.0" prefHeight="100.0" prefWidth="248.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
+      <Label layoutX="105.0" layoutY="111.0" text="Due Today:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXListView fx:id="studysets" layoutX="27.0" layoutY="414.0" prefHeight="170.0" prefWidth="248.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
-      <Label layoutX="107.0" layoutY="379.0" text="Study Sets:" textFill="WHITE">
+      <JFXListView fx:id="studysets" layoutX="27.0" layoutY="275.0" prefHeight="148.0" prefWidth="248.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
+      <Label layoutX="108.0" layoutY="248.0" text="Study Sets:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

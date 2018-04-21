@@ -70,11 +70,11 @@ public class DrawerContentController implements Initializable{
             AnchorPane newStudySet = FXMLLoader.load(getClass().getResource("/main/resources/app/view/NewStudySet.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(newStudySet);
-            primaryStage.initStyle(StageStyle.UNIFIED);
             primaryStage.setHeight(300);
             primaryStage.setWidth(300);
             primaryStage.setScene(scene);
             primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+            primaryStage.initStyle(StageStyle.DECORATED);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,12 +88,12 @@ public class DrawerContentController implements Initializable{
             AnchorPane pomodoro = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Pomodoro.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(pomodoro);
-            primaryStage.initStyle(StageStyle.UNIFIED);
             primaryStage.setHeight(300);
             primaryStage.setWidth(300);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Pomodoro Timer");
             primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+            primaryStage.initStyle(StageStyle.DECORATED);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,12 +106,12 @@ public class DrawerContentController implements Initializable{
             AnchorPane rewards = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Rewards.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(rewards);
-            primaryStage.initStyle(StageStyle.UNIFIED);
             primaryStage.setHeight(750);
             primaryStage.setWidth(1215);
             primaryStage.setScene(scene);
             primaryStage.setTitle("My Galaxy");
             primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+            primaryStage.initStyle(StageStyle.DECORATED);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

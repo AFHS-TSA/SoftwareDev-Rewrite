@@ -29,13 +29,14 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("/main/resources/app/css/application.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-		   	primaryStage.setHeight(900);
+		   	primaryStage.setHeight(680);
 			primaryStage.setWidth(1250);
 			System.out.println("Height: " + screenBounds.getHeight() + "Width: " + screenBounds.getWidth());
 
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
 			primaryStage.setResizable(false);
+			primaryStage.initStyle(StageStyle.DECORATED);
 			primaryStage.show();
 			
 			// Listener for minimum width and height 

@@ -1,11 +1,15 @@
 package main.java.app.controllers;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -180,6 +184,18 @@ public class BaseController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		Preferences preferences = Preferences.userNodeForPackage(Methods.class);
+		Random random = new Random();
+		int randomInt = random.nextInt((24-0) + 1);
+		preferences.putInt("RandomNumber", randomInt);
+		try {
+			preferences.exportNode(new FileOutputStream("quote.xml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (BackingStoreException e) {
+			e.printStackTrace();
+		}
 
     	listView.setExpanded(true);
 
