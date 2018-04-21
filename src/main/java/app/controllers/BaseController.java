@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -12,6 +14,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.sun.javafx.scene.SceneHelper;
 import com.sun.javafx.stage.StageHelper;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -92,11 +95,6 @@ public class BaseController implements Initializable {
     }*/
 
     @FXML
-	private void onRefresh() {
-    	updateLabel();
-	}
-
-    @FXML
 	private void onNewQuote() {
     	updateQuote();
 	}
@@ -142,17 +140,22 @@ public class BaseController implements Initializable {
 					listView.getItems().remove(due);
 					listView.getItems().remove(type);
 					listView.getItems().remove(pri);
-					Var.assignmentsList.remove(i);
+
 					Notifications.create()
 							.title("Assignment Completed")
 							.darkStyle()
 							.text(chkBx.getText() + " completed")
 							.hideAfter(Duration.seconds(5))
 							.showConfirm();
-					Var.points += 25;
+					if (Var.assignmentsList.get(i).type.equals("Major")) {
+						Var.points += 75;
+					} else if (Var.assignmentsList.get(i).type.equals("Minor")) {
+						Var.points += 50;
+					} else if (Var.assignmentsList.get(i).type.equals("Regular")) {
+						Var.points += 25;
+					}
+					Methods.setPoints();
 					updateLabel();
-					//DrawerContentController dc = new DrawerContentController();
-					//dc.update();
 				}
 			}
 		});
@@ -178,11 +181,11 @@ public class BaseController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+    	listView.setExpanded(true);
+
 		setPriority.getItems().addAll("Low", "Medium", "High");
 		setType.getItems().addAll("Major", "Minor", "Regular");
 		Methods.updatePoints();
-
-		updateLabel();
 
 		quote.setText(Methods.getQuote());
 
@@ -207,9 +210,20 @@ public class BaseController implements Initializable {
 				}
 				rightNavDrawer.setId("expand");
 			}
-		
+
+		Timer timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				@Override
+				public void run() {
+					Platform.runLater(() -> {
+						Methods.setPoints();
+						updateLabel();
+					});
+				}
+			}, 10, 1000);
+
         	// Change the drawer layout based on the size of the window.
-        	/*f(basePane.getWidth() < 875) {
+        	/*if(basePane.getWidth() < 875) {
         		navBurger.setVisible(true);
         		leftNavDrawer.setVisible(true);
         		basePane.getChildren().remove(rightNavDrawer);

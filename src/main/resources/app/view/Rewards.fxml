@@ -8,45 +8,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="background" maxHeight="802.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.RewardsController">
+<AnchorPane fx:id="background" maxHeight="802.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.RewardsController">
    <children>
-      <ImageView fx:id="earth" fitHeight="122.0" fitWidth="164.0" layoutX="334.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="earth" fitHeight="122.0" fitWidth="164.0" layoutX="319.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Earth_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="jupiter" fitHeight="150.0" fitWidth="220.0" layoutX="647.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="jupiter" fitHeight="150.0" fitWidth="220.0" layoutX="641.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Jupiter_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="mars" fitHeight="68.0" fitWidth="66.0" layoutX="498.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="mars" fitHeight="68.0" fitWidth="66.0" layoutX="435.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Mars_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="mercury" fitHeight="46.0" fitWidth="48.0" layoutX="200.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="mercury" fitHeight="46.0" fitWidth="48.0" layoutX="55.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Mercury_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="venus" fitHeight="95.0" fitWidth="125.0" layoutX="259.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="venus" fitHeight="95.0" fitWidth="125.0" layoutX="101.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Venus_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="uranus" fitHeight="106.0" fitWidth="104.0" layoutX="832.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="uranus" fitHeight="106.0" fitWidth="104.0" layoutX="953.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Uranus_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="neptune" fitHeight="121.0" fitWidth="126.0" layoutX="967.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="neptune" fitHeight="121.0" fitWidth="126.0" layoutX="1046.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/Neptune_100x100px.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="saturn" fitHeight="150.0" fitWidth="200.0" layoutX="698.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/Saturn_300x300px.png" />
+         </image></ImageView>
       <Accordion layoutX="998.0" layoutY="-6.0">
         <panes>
           <TitledPane animated="false" text="Planets">

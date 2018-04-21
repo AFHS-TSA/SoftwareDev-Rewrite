@@ -3,10 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,43 +12,32 @@
 
 <BorderPane fx:id="basePane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #414141;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.BaseController">
    <center>
-      <AnchorPane fx:id="mainPane" maxHeight="900.0" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="-Infinity" prefHeight="853.0" prefWidth="1200.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="mainPane" maxHeight="900.0" maxWidth="920.0" minHeight="500.0" minWidth="-Infinity" prefHeight="900.0" prefWidth="924.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" layoutX="29.0" layoutY="25.0" prefHeight="741.0" prefWidth="750.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
-            <Label fx:id="newAssignment" layoutX="816.0" layoutY="25.0" text="New Assignment" textFill="WHITE">
+            <JFXListView fx:id="listView" layoutX="33.0" layoutY="46.0" prefHeight="720.0" prefWidth="532.0" styleClass="jfx-list-cell" stylesheets="@../css/listview.css" />
+            <Label fx:id="newAssignment" layoutX="657.0" layoutY="25.0" text="New Assignment" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="setPriority" layoutX="856.0" layoutY="151.0" prefHeight="25.0" prefWidth="92.0" promptText="Priority" style="-fx-background-color: #FFFFFF70;" />
-            <JFXDatePicker fx:id="setDueDate" defaultColor="#303030" layoutX="817.0" layoutY="116.0" promptText="Due Date" style="-fx-background-color: #FFFFFF70;" />
-            <JFXTextField fx:id="setTitle" layoutX="835.0" layoutY="82.0" promptText="Assignment Name" style="-fx-background-color: #FFFFFF70;" />
-            <JFXButton fx:id="addNew" buttonType="RAISED" contentDisplay="CENTER" layoutX="883.0" layoutY="240.0" onAction="#onNewAdded" style="-fx-background-color: #303030;" text="Add" textFill="WHITE" />
-            <Label fx:id="points" layoutX="29.0" layoutY="779.0" text="Points: " textFill="#ffffffb2" />
-            <JFXComboBox fx:id="setType" layoutX="857.0" layoutY="186.0" prefHeight="25.0" prefWidth="92.0" promptText="Type" style="-fx-background-color: #FFFFFF70;" />
-            <Label fx:id="quote" alignment="TOP_LEFT" layoutX="883.0" layoutY="483.0" prefHeight="213.0" prefWidth="263.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <JFXComboBox fx:id="setPriority" layoutX="657.0" layoutY="155.0" prefHeight="25.0" prefWidth="171.0" promptText="Priority" style="-fx-background-color: #FFFFFF70;" />
+            <JFXDatePicker fx:id="setDueDate" defaultColor="#303030" layoutX="657.0" layoutY="115.0" promptText="Due Date" style="-fx-background-color: #FFFFFF70;" />
+            <JFXTextField fx:id="setTitle" layoutX="657.0" layoutY="77.0" prefHeight="25.0" prefWidth="171.0" promptText="Assignment Name" style="-fx-background-color: #FFFFFF70;" />
+            <JFXButton fx:id="addNew" buttonType="RAISED" contentDisplay="CENTER" layoutX="724.0" layoutY="237.0" onAction="#onNewAdded" style="-fx-background-color: #303030;" text="Add" textFill="WHITE" />
+            <Label fx:id="points" layoutX="33.0" layoutY="779.0" prefHeight="17.0" prefWidth="77.0" text="Points: " textFill="#ffffffb2" />
+            <JFXComboBox fx:id="setType" layoutX="657.0" layoutY="191.0" prefHeight="25.0" prefWidth="171.0" promptText="Type" style="-fx-background-color: #FFFFFF70;" />
+            <Label fx:id="quote" alignment="TOP_LEFT" layoutX="612.0" layoutY="396.0" prefHeight="228.0" prefWidth="263.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="newQuote" buttonType="RAISED" contentDisplay="CENTER" layoutX="976.0" layoutY="706.0" onAction="#onNewQuote" style="-fx-background-color: #303030;" text="New Quote" textFill="WHITE" />
-            <JFXButton fx:id="refresh" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="116.0" layoutY="775.0" onAction="#onRefresh" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: #303030;" text=" Refresh" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton fx:id="newQuote" buttonType="RAISED" contentDisplay="CENTER" layoutX="704.0" layoutY="630.0" onAction="#onNewQuote" style="-fx-background-color: #303030;" text="New Quote" textFill="WHITE" />
             
          </children>
       </AnchorPane>
    </center>
    <top>
       <BorderPane style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
-         <left>
-            <JFXHamburger fx:id="navBurger" alignment="CENTER" fillWidth="false" prefHeight="60.0" prefWidth="55.0" style="-fx-background-color: #212121;" stylesheets="@../css/application.css">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </JFXHamburger>
-         </left>
          <center>
             <Label fx:id="titleBar" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="60.0" style="-fx-background-color: #212121;" text="Astral Focus" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>

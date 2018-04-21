@@ -13,14 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import main.java.app.Methods;
 import main.java.app.SpacedRep;
 import main.java.app.Var;
+import org.controlsfx.control.Notifications;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,7 +40,7 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class DrawerContentController implements Initializable{
-    
+
     @FXML
     JFXButton newstudy;
     @FXML
@@ -71,6 +74,7 @@ public class DrawerContentController implements Initializable{
             primaryStage.setHeight(300);
             primaryStage.setWidth(300);
             primaryStage.setScene(scene);
+            primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,6 +93,7 @@ public class DrawerContentController implements Initializable{
             primaryStage.setWidth(300);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Pomodoro Timer");
+            primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,6 +111,7 @@ public class DrawerContentController implements Initializable{
             primaryStage.setWidth(1215);
             primaryStage.setScene(scene);
             primaryStage.setTitle("My Galaxy");
+            primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -125,6 +131,12 @@ public class DrawerContentController implements Initializable{
                         cb.setText("Study " + Var.studySets.get(i).getTitle() + " at " + Var.studySets.get(i).getHour() + ":" + Var.studySets.get(i).getMinute() + " " + Var.studySets.get(i).getMeridiem() + " " + Var.studySets.get(i).getDay());
                         Var.points += 15;
                         Methods.setPoints();
+                        Notifications.create()
+                                .title("Assignment Completed")
+                                .darkStyle()
+                                .text(Var.studySets.get(i).getTitle() + " studied")
+                                .hideAfter(Duration.seconds(5))
+                                .showConfirm();
                         cb.setSelected(false);
                     }
                 }
@@ -155,7 +167,6 @@ public class DrawerContentController implements Initializable{
                     }
 
                     for (int i = 0; i < Var.studySets.size(); i++) {
-
                         updateSets(i);
                     }
 

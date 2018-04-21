@@ -30,7 +30,7 @@ public class Main extends Application {
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 		   	primaryStage.setHeight(900);
-			primaryStage.setWidth(1550);
+			primaryStage.setWidth(1250);
 			System.out.println("Height: " + screenBounds.getHeight() + "Width: " + screenBounds.getWidth());
 
 			primaryStage.setScene(scene);
@@ -41,7 +41,6 @@ public class Main extends Application {
 			// Listener for minimum width and height 
 			TimeUnit.SECONDS.sleep((long) .1);
 			ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue) -> {
-		    	System.out.println("Height: " + primaryStage.getHeight() + " Width: " + primaryStage.getWidth());
 				if(primaryStage.getHeight() == Var.height && primaryStage.getWidth() == Var.width) {
 				   	primaryStage.setHeight(Var.height);
 					primaryStage.setWidth(Var.width);

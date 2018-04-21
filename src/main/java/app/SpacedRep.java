@@ -44,7 +44,6 @@ public class SpacedRep {
 
 
         rN = n;
-        //memStrength++;
         return d;
     }
 

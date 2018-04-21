@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import main.java.app.Methods;
 import main.java.app.Var;
 
 import java.io.FileOutputStream;
@@ -30,6 +31,8 @@ public class RewardsController {
     ImageView mars;
     @FXML
     ImageView jupiter;
+    @FXML
+    ImageView saturn;
     @FXML
     ImageView uranus;
     @FXML
@@ -156,7 +159,7 @@ public class RewardsController {
         if (Var.points >= 1500) {
             Var.points -= 1500;
             Var.saturn = true;
-
+            saturn.setVisible(true);
             pointslbl.setText("Points: " + Var.points);
             updatePoints();
             updatePlanets();
@@ -217,8 +220,11 @@ public class RewardsController {
     public void initialize() {
         pref = Preferences.userNodeForPackage(RewardsController.class);
 
-        Var.points = pref.getInt("points", 1800);
+        Methods.updatePoints();
         pointslbl.setText("Points: " + Var.points);
+
+        getPlanets(pref);
+        checkPlanets();
 
         try {
             pref.exportNode(new FileOutputStream("Rewards.xml"));
@@ -239,6 +245,17 @@ public class RewardsController {
         } catch (BackingStoreException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getPlanets(Preferences pref) {
+        Var.mercury = pref.getBoolean("mercury", false);
+        Var.venus = pref.getBoolean("venus", false);
+        Var.earth = pref.getBoolean("earth", false);
+        Var.mars = pref.getBoolean("mars", false);
+        Var.jupiter = pref.getBoolean("jupiter", false);
+        Var.saturn = pref.getBoolean("saturn", false);
+        Var.uranus = pref.getBoolean("uranus", false);
+        Var.neptune = pref.getBoolean("neptune", false);
     }
 
     public void updatePlanets() {
@@ -274,7 +291,7 @@ public class RewardsController {
         } if (Var.jupiter) {
             jupiter.setVisible(true);
         } if (Var.saturn) {
-
+            saturn.setVisible(true);
         } if (Var.uranus) {
             uranus.setVisible(true);
         } if (Var.neptune) {
