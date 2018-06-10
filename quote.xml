@@ -9,7 +9,7 @@
         <map/>
         <node name="app">
           <map>
-            <entry key="RandomNumber" value="20"/>
+            <entry key="RandomNumber" value="10"/>
           </map>
         </node>
       </node>

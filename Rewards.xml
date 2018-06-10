@@ -11,17 +11,15 @@
           <map/>
           <node name="controllers">
             <map>
-              <entry key="Username" value="Jason"/>
-              <entry key="Password" value="Long"/>
-              <entry key="points" value="0"/>
-              <entry key="mercury" value="false"/>
-              <entry key="venus" value="false"/>
               <entry key="earth" value="false"/>
-              <entry key="mars" value="false"/>
               <entry key="jupiter" value="false"/>
+              <entry key="mars" value="false"/>
+              <entry key="mercury" value="false"/>
+              <entry key="neptune" value="false"/>
+              <entry key="points" value="1800"/>
               <entry key="saturn" value="false"/>
               <entry key="uranus" value="false"/>
-              <entry key="neptune" value="false"/>
+              <entry key="venus" value="false"/>
             </map>
           </node>
         </node>
