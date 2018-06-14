@@ -67,11 +67,11 @@ public class DrawerContentController implements Initializable{
     private void onNewClicked() {
 
         try {
-            AnchorPane newStudySet = FXMLLoader.load(getClass().getResource("/main/resources/app/view/NewStudySet.fxml"));
+            BorderPane newStudySet = FXMLLoader.load(getClass().getResource("/main/resources/app/view/NewStudySet.fxml"));
             Stage primaryStage = new Stage();
             Scene scene = new Scene(newStudySet);
-            primaryStage.setHeight(300);
-            primaryStage.setWidth(300);
+            primaryStage.setHeight(600);
+            primaryStage.setWidth(600);
             primaryStage.setScene(scene);
             primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
             primaryStage.initStyle(StageStyle.DECORATED);
