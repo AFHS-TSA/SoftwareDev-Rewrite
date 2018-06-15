@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.NewStudySetController">
-   <center>
-      <AnchorPane prefHeight="396.0" prefWidth="407.0" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="main.java.app.controllers.NewStudySetController">
+	 <center>
+      <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <JFXButton layoutX="322.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizSearch" text="Search" />
-            <JFXTextField fx:id="quizSearch" layoutX="188.0" layoutY="27.0" prefHeight="25.0" prefWidth="113.0" />
-            <JFXTreeTableView fx:id="searchResults" layoutX="11.0" layoutY="65.0" prefHeight="529.0" prefWidth="578.0" />
+            <JFXRadioButton layoutX="89.0" layoutY="88.0" onAction="#onAF" selected="true" text="Astral Focus Set">
+               <toggleGroup>
+                  <ToggleGroup fx:id="studyPick" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton layoutX="89.0" layoutY="119.0" onAction="#onSelf" text="Self Made Set" toggleGroup="$studyPick" />
+            <JFXRadioButton layoutX="89.0" layoutY="150.0" onAction="#onQuizlet" text="Quizlet Set" toggleGroup="$studyPick" />
+            <Label fx:id="quizletSet" layoutX="124.0" layoutY="177.0" text="Label" />
          </children>
       </AnchorPane>
-   </center>
+     </center>
 </BorderPane>

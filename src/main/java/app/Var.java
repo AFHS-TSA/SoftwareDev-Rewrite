@@ -36,4 +36,6 @@ public class Var {
 
 	// Quizlet Client ID
 	public static String clientID = "UNNa57NRpT";
+	public static int quizletSelectionID;
+	public static String quizletSelectionTitle;
 	}
