@@ -9,6 +9,7 @@ import org.Quizlet;
 import org.controlsfx.control.Notifications;
 import org.json.JSONException;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -27,6 +28,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.java.app.Var;
@@ -36,7 +39,6 @@ public class QuizletSearchController implements Initializable {
 	
 	@FXML
 	private TextField quizSearch;
-
     @FXML
     private JFXTreeTableView<Set> searchResults;
 	ObservableList<Set> sets = FXCollections.observableArrayList();
@@ -49,7 +51,7 @@ public class QuizletSearchController implements Initializable {
 	public void onQuizSearch() throws Exception {
 
 		JFXTreeTableColumn<Set, String> titleName = new JFXTreeTableColumn<>("Title");
-		titleName.setPrefWidth(250);
+		titleName.setPrefWidth(300);
 		titleName.setCellValueFactory((TreeTableColumn.CellDataFeatures<Set, String> param) ->{
 		    if(titleName.validateValue(param)) return param.getValue().getValue().setTitle;
 		    else return titleName.getComputedValue(param);
@@ -63,7 +65,7 @@ public class QuizletSearchController implements Initializable {
 		});	
 		
 		JFXTreeTableColumn<Set, String> creatorName = new JFXTreeTableColumn<>("Creator");
-		creatorName.setPrefWidth(150);
+		creatorName.setPrefWidth(220);
 		creatorName.setCellValueFactory((TreeTableColumn.CellDataFeatures<Set, String> param) ->{
 		    if(creatorName.validateValue(param)) return param.getValue().getValue().setCreator;
 		    else return creatorName.getComputedValue(param);
@@ -77,6 +79,38 @@ public class QuizletSearchController implements Initializable {
 		searchResults.getColumns().setAll(titleName, termCount, creatorName);
 		searchResults.setRoot(searchRoot);
 		searchResults.setShowRoot(false);
+	}
+	
+	@FXML
+	public void onQuizImport() throws JSONException, Exception {
+		Var.quizletSelectionID = Integer.parseInt(quizSearch.getText());
+		Var.quizletSelectionTitle = Quizlet.getTitle(Var.clientID, Var.quizletSelectionID);
+		
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Quizlet Set Import");
+		alert.setHeaderText("Is this the correct Quizlet set?");
+		alert.setContentText("You are about to import " + "'" + Var.quizletSelectionTitle + "'");
+
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get() == ButtonType.OK) {
+			Stage stage = (Stage) baseBorder.getScene().getWindow();
+			stage.close();
+		} else {}
+	}
+	
+	@FXML
+	public void onQuizHelp() {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Quizlet Set Import");
+		alert.setHeaderText("Confused on how to import a set?");
+		alert.setContentText("Simply just copy and paste the setID of your Quizlet set. For Example  in https://quizlet.com/277994239/Set-Name/ the setID would be 277994239");
+		alert.showAndWait();
+	}
+	
+	@FXML
+	public void onQuizClear() {
+		sets.clear();
 	}
 	
 	class Set extends RecursiveTreeObject<Set>{
