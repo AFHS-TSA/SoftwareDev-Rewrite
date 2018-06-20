@@ -38,7 +38,7 @@ import main.java.app.Assignments;
 import main.java.app.Methods;
 import main.java.app.Var;
 import org.controlsfx.control.Notifications;
-//import org.Quizlet;
+import org.Quizlet;
 
 public class BaseController implements Initializable {
 
