@@ -13,7 +13,7 @@
             <map>
               <entry key="Username" value="Jason"/>
               <entry key="Password" value="Long"/>
-              <entry key="points" value="90"/>
+              <entry key="points" value="200"/>
               <entry key="mercury" value="false"/>
               <entry key="venus" value="false"/>
               <entry key="earth" value="false"/>

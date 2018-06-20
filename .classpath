@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/geekn/Desktop/Dependencies/controlsfx-8.40.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/geekn/Desktop/Dependencies/java-json.jar"/>
+	<classpathentry kind="lib" path="C:/Users/geekn/Desktop/Dependencies/jfoenix-8.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/geekn/Desktop/Dependencies/QuizletLib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/geekn/Desktop/Dependencies/scenebuilder-10.0.0-all.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

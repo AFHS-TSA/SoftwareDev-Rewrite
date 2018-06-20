@@ -1,130 +1,83 @@
 package main.java.app.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXRadioButton;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import main.java.app.SpacedRep;
 import main.java.app.Var;
 
-import java.io.IOException;
+public class NewStudySetController implements Initializable{
 
-import org.Quizlet;
-import org.json.JSONException;
+	@FXML
+	private BorderPane baseBorder;
+	@FXML
+	private Label quizletSet;
+	@FXML
+	private RadioButton quizlet;
+	@FXML
+	private RadioButton self;
+	@FXML
+	private JFXTextField afSetEnter;
+	@FXML
+	private Button afSetAdd;
 
-public class NewStudySetController{
+	@FXML
+	public void onSelf() {
+		System.out.println("AF");
+		afAnimation(50, true);
+	}
 
-    @FXML
-    JFXButton done;
-    @FXML
-    JFXTextField setName;
-    @FXML
-    AnchorPane anchorPane;
-    @FXML
-    JFXRadioButton AFSet;
-    @FXML
-    JFXRadioButton Quizlet;
-    @FXML
-    JFXRadioButton Self;
-    @FXML
-    JFXTextField quizSearch;
-    @FXML
-    JFXButton search;
-    @FXML
-    
-    
-    
-    int isClicked = 0;
-    @FXML
-    private void onSearchClicked(){
-    	try{
-        	Quizlet.setSearch("UNNa57NRpT", "Chemistry");
-        	int[]searchID = Quizlet.getSearchID();
-        	for(int realid:searchID){
-        		System.out.println(realid);
-        	}
-    	}
-    	catch(IOException | JSONException e)
-        		{
-    		e.printStackTrace();
-        	}
-        }
-    
-    
-    @FXML
-    private void onDoneClicked() {
-    	SpacedRep set = new SpacedRep();
-    	switch(isClicked){
-    	case 1:
-    		set.setTitle(setName.getText());
-    		Var.studySets.add(set);
-    		set.setType("Astral Focus Set");
-    		break;
-    	case 2: 
-    		set.setTitle(setName.getText());
-    		Var.studySets.add(set);
-    		set.setType("Self Made Set");
-    		break;
-    	case 3: 
-    		
-    		Var.studySets.add(set);
-    		set.setType("Quizlet Set");
-    		break;
-    	}
-        	Stage stage = (Stage) anchorPane.getScene().getWindow();
-            stage.close();
+	@FXML
+	public void onQuizlet() {
+		afAnimation(0, false);
+		try {
+			BorderPane newStudySet = FXMLLoader.load(getClass().getResource("/main/resources/app/view/QuizletSearch.fxml"));
+			Stage primaryStage = new Stage();
+			Scene scene = new Scene(newStudySet);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+			primaryStage.initStyle(StageStyle.DECORATED);
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-    }
-    @FXML
-      private void afsetClicked(){
-    	isClicked = 1;
-    	if(AFSet.isSelected())
-    	{
-    	Self.setDisable(true);
-    	Quizlet.setDisable(true);
-    	}
-    else{
-    	AFSet.setDisable(false);
-    	Quizlet.setDisable(false);
-    	Self.setDisable(false);
-    }
-    }
-    	
-    
-    @FXML
-    private void selfClicked(){
-    	isClicked = 2;
-    	if(Self.isSelected())
-    	{
-    	AFSet.setDisable(true);
-    	Quizlet.setDisable(true);
-    	}
-    else{
-    	AFSet.setDisable(false);
-    	Quizlet.setDisable(false);
-    	Self.setDisable(false);
-    }
-    }
-    
-    @FXML
-    private void quizletClicked(){
-    	isClicked = 3;
-    	if(Quizlet.isSelected())
-    	{
-    	AFSet.setDisable(true);
-    	Self.setDisable(true);
-    	}
-    else{
-    	AFSet.setDisable(false);
-    	Quizlet.setDisable(false);
-    	Self.setDisable(false);
-    }
-    }
- }
+	}
+	
+	
+	@FXML
+	public void afSetAdd() {
+        SpacedRep set = new SpacedRep();
+        set.setTitle(afSetEnter.getText());
+        Var.studySets.add(set);
+        Stage stage = (Stage) baseBorder.getScene().getWindow();
+        stage.close();
+	}
+	
 
-
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		afAnimation(50, true);
+	}
+	
+	private void afAnimation(int trans, boolean visible) {
+		quizlet.setTranslateY(trans);
+		afSetEnter.setVisible(visible);
+		afSetAdd.setVisible(visible);
+	}
+}
