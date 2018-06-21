@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -33,6 +34,8 @@ public class LoginController {
 	private JFXTextField userField;
 	@FXML
 	private JFXPasswordField passField;
+	@FXML
+	private Label errorLabel;
 	static int count;
 	
 	@FXML
@@ -86,9 +89,11 @@ public class LoginController {
 						}
 					} else {
 						System.out.println("Failed");
+						errorLabel.setText("Something went wrong. Check that your Username and Password are correct");
 					}
 				} else {
 					System.out.println("failed");
+					errorLabel.setText("Something went wrong. Check that your Username and Password are correct");
 				}
 
 			}

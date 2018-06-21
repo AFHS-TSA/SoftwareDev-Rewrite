@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.app.Var;
@@ -25,6 +26,8 @@ public class RegisterController {
 	private JFXPasswordField passFieldConfirm;
 	@FXML
 	private AnchorPane baseAnchor;
+	@FXML
+	private Label errorLabel;
 	public int count = 0;
 	
 	@FXML
@@ -60,6 +63,7 @@ public class RegisterController {
 				}
 			}
 		} else {
+			errorLabel.setText("Your Passwords don't match");
 			System.out.println("Doesn't Match");
 		}
 	}

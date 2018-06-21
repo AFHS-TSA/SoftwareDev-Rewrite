@@ -42,7 +42,7 @@ public class NewStudySetController implements Initializable{
 	@FXML
 	public void onSelf() {
 		System.out.println("AF");
-		afAnimation(50, true);
+		afAnimation(30, true);
 	}
 
 	@FXML
@@ -95,7 +95,7 @@ public class NewStudySetController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		afAnimation(50, true);
+		afAnimation(30, true);
 	}
 	
 	private void afAnimation(int trans, boolean visible) {

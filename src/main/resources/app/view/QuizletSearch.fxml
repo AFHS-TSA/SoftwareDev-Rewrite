@@ -11,12 +11,12 @@
    <center>
       <AnchorPane prefHeight="396.0" prefWidth="407.0" style="-fx-background-color: #424242;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton layoutX="398.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizSearch" text="Search" textFill="WHITE" />
-            <JFXTextField fx:id="quizSearch" focusColor="WHITE" layoutX="40.0" layoutY="27.0" prefHeight="25.0" prefWidth="342.0" unFocusColor="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="398.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizSearch" style="-fx-background-color: #303030;" text="Search" textFill="WHITE" />
+            <JFXTextField fx:id="quizSearch" focusColor="BLACK" layoutX="40.0" layoutY="27.0" onAction="#onQuizSearch" prefHeight="25.0" prefWidth="342.0" promptText="Search or Import" style="-fx-background-color: #FFFFFF70;" unFocusColor="#5b5b5b" />
             <JFXTreeTableView fx:id="searchResults" editable="true" layoutX="11.0" layoutY="68.0" prefHeight="532.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0" />
-            <JFXButton layoutX="457.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizClear" text="Clear" textFill="WHITE" />
-            <JFXButton layoutX="505.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizImport" text="Import" textFill="#fffdfd" />
-            <JFXButton layoutX="557.0" layoutY="24.0" mnemonicParsing="false" onAction="#onQuizHelp" prefHeight="0.0" prefWidth="0.0" text="?" textAlignment="RIGHT">
+            <JFXButton buttonType="RAISED" layoutX="457.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizClear" style="-fx-background-color: #303030;" text="Clear" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="505.0" layoutY="27.0" mnemonicParsing="false" onAction="#onQuizImport" style="-fx-background-color: #303030;" text="Import" textFill="#fffdfd" />
+            <JFXButton buttonType="RAISED" layoutX="562.0" layoutY="25.0" mnemonicParsing="false" onAction="#onQuizHelp" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #303030;" text="?" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
