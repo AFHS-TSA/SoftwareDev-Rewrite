@@ -32,6 +32,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import main.java.app.SpacedRep;
 import main.java.app.Var;
 
 
@@ -161,7 +162,10 @@ public class QuizletSearchController implements Initializable {
 			        alert.setContentText("You picked " + "'" + Var.quizletSelectionTitle + "'");
 
 			        Optional<ButtonType> option = alert.showAndWait();
-
+			        SpacedRep set = new SpacedRep();
+			        set.setTitle(Var.quizletSelectionTitle);
+			        Var.studySets.add(set);
+			        
 			        if (option.get() == ButtonType.OK) {
 			        	Stage stage = (Stage) baseBorder.getScene().getWindow();
 			            stage.close();

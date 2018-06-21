@@ -63,7 +63,7 @@ public class NewStudySetController implements Initializable{
 	public void afSetAdd() {
         SpacedRep set = new SpacedRep();
         set.setTitle(afSetEnter.getText());
-        DrawerContentController.studySets.add(set);
+        Var.studySets.add(set);
         Stage stage = (Stage) baseBorder.getScene().getWindow();
         stage.close();
 	}

@@ -38,4 +38,7 @@ public class Var {
 	public static String clientID = "UNNa57NRpT";
 	public static int quizletSelectionID;
 	public static String quizletSelectionTitle;
+	
+	// SQL Path (NOTE: Change to your system)
+	public static String sqlURL = "jdbc:sqlite:C:\\Users\\Jason\\Desktop\\SoftwareDev-Rewrite\\Data.db"; 
 	}

@@ -11,7 +11,9 @@
           <map/>
           <node name="controllers">
             <map>
-              <entry key="points" value="715"/>
+              <entry key="Username" value="Jaosn"/>
+              <entry key="Password" value="Long"/>
+              <entry key="points" value="100"/>
               <entry key="mercury" value="false"/>
               <entry key="venus" value="false"/>
               <entry key="earth" value="false"/>

@@ -24,13 +24,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/main/resources/app/view/Base.fxml"));
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/main/resources/app/view/Login.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/main/resources/app/css/application.css").toExternalForm());
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-		   	primaryStage.setHeight(680);
-			primaryStage.setWidth(1250);
+		   	primaryStage.setHeight(400);
+			primaryStage.setWidth(400);
 			System.out.println("Height: " + screenBounds.getHeight() + "Width: " + screenBounds.getWidth());
 
 			primaryStage.setScene(scene);
