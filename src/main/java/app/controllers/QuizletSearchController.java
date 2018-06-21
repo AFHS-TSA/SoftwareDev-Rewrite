@@ -170,6 +170,8 @@ public class QuizletSearchController implements Initializable {
 			        if (option.get() == ButtonType.OK) {
 				        SpacedRep set = new SpacedRep();
 				        set.setTitle(Var.quizletSelectionTitle);
+				        set.setQuizlet(true);
+				        set.setID(Quizlet.getSetID());
 				        Var.studySets.add(set);
 				        
 				        Connection conn = null;

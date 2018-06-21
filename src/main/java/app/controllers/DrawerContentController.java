@@ -155,6 +155,23 @@ public class DrawerContentController implements Initializable{
                                 .text(Var.studySets.get(i).getTitle() + " studied")
                                 .hideAfter(Duration.seconds(5))
                                 .showConfirm();
+                        if (Var.studySets.get(i).getQuizlet()) {
+                            Var.flashID = Var.studySets.get(i).getID();
+                            try {
+                                AnchorPane flash = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Flashcard.fxml"));
+                                Stage primaryStage = new Stage();
+                                Scene scene = new Scene(flash);
+                                primaryStage.setHeight(425);
+                                primaryStage.setWidth(600);
+                                primaryStage.setScene(scene);
+                                primaryStage.setTitle("Flashcard");
+                                primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+                                primaryStage.initStyle(StageStyle.DECORATED);
+                                primaryStage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         cb.setSelected(false);
                     }
                 }

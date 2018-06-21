@@ -11,7 +11,7 @@
           <map/>
           <node name="controllers">
             <map>
-              <entry key="points" value="45"/>
+              <entry key="points" value="1800"/>
               <entry key="mercury" value="false"/>
               <entry key="venus" value="false"/>
               <entry key="earth" value="false"/>

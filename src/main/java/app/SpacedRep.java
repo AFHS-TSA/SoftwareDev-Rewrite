@@ -11,10 +11,27 @@ public class SpacedRep {
     int rN = 0;
     int d = 0;
     String title;
+    boolean quizlet = false;
+    int setID;
 
     ZoneId zone = ZoneId.systemDefault();
     ZonedDateTime time = ZonedDateTime.now(zone);
 
+    public int getID() {
+        return this.setID;
+    }
+
+    public void setID(int ID) {
+        this.setID = ID;
+    }
+
+    public boolean getQuizlet() {
+        return this.quizlet;
+    }
+
+    public void setQuizlet(boolean quizlet) {
+        this.quizlet = quizlet;
+    }
 
     public String getTitle() {
         return this.title;
