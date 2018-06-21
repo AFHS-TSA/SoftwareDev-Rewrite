@@ -61,11 +61,26 @@ public class DrawerContentController implements Initializable{
     public JFXListView upcoming;
     @FXML
     public JFXListView studysets;
+    @FXML
+    public JFXButton flashcard;
 
-    //int memStrength = 1;
-
-    public static ArrayList<SpacedRep> studySets = new ArrayList<SpacedRep>();
-
+    @FXML
+    private void onFlash() {
+        try {
+            AnchorPane flash = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Flashcard.fxml"));
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(flash);
+            primaryStage.setHeight(425);
+            primaryStage.setWidth(600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Flashcard");
+            primaryStage.getIcons().add(new Image("main/resources/app/images/AstralFocus_4.png"));
+            primaryStage.initStyle(StageStyle.DECORATED);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void onNewClicked() {

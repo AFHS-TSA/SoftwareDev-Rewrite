@@ -42,5 +42,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <JFXButton fx:id="flashcard" buttonType="RAISED" layoutX="165.0" layoutY="462.0" onAction="#onFlash" style="-fx-background-color: #212121;" text="Flashcard" textFill="#ffffffb2" />
    </children>
 </AnchorPane>

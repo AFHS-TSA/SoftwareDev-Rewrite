@@ -106,9 +106,11 @@ public class Methods {
     public static ArrayList getUrgent(ZonedDateTime time) {
         ArrayList list = new ArrayList();
         for (int i = 0; i < Var.assignmentsList.size(); i++) {
-            if (time.getMonthValue() < 10 && Var.assignmentsList.get(i).dueDate.equals("0" + time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear())) {
+            if (time.getMonthValue() < 10 && Var.assignmentsList.get(i).dueDate
+                    .equals("0" + time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear())) {
                 list.add(Var.assignmentsList.get(i).title);
-            } else if (time.getMonthValue() >= 10 && Var.assignmentsList.get(i).dueDate.equals(time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear())) {
+            } else if (time.getMonthValue() >= 10 && Var.assignmentsList.get(i).dueDate
+                    .equals(time.getMonthValue() + "-" + time.getDayOfMonth() + "-" + time.getYear())) {
                 list.add(Var.assignmentsList.get(i).title);
             }
         }
