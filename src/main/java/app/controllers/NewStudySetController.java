@@ -2,6 +2,10 @@ package main.java.app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
@@ -64,7 +68,27 @@ public class NewStudySetController implements Initializable{
         SpacedRep set = new SpacedRep();
         set.setTitle(afSetEnter.getText());
         Var.studySets.add(set);
-        //DrawerContentController.studySets.add(set);
+        
+        Connection conn = null;
+        try {
+        	conn = DriverManager.getConnection(Var.sqlURL);
+            Statement statement = conn.createStatement();
+            System.out.println(Var.username);
+            statement.executeUpdate("insert into " + Var.username + " (studysets) values ('" + afSetEnter.getText() + "')");
+            			            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        
         Stage stage = (Stage) baseBorder.getScene().getWindow();
         stage.close();
 	}

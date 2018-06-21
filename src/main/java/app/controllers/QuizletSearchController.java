@@ -2,6 +2,11 @@ package main.java.app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -162,11 +167,32 @@ public class QuizletSearchController implements Initializable {
 			        alert.setContentText("You picked " + "'" + Var.quizletSelectionTitle + "'");
 
 			        Optional<ButtonType> option = alert.showAndWait();
-			        SpacedRep set = new SpacedRep();
-			        set.setTitle(Var.quizletSelectionTitle);
-			        Var.studySets.add(set);
-			        
 			        if (option.get() == ButtonType.OK) {
+				        SpacedRep set = new SpacedRep();
+				        set.setTitle(Var.quizletSelectionTitle);
+				        Var.studySets.add(set);
+				        
+				        Connection conn = null;
+				        try {
+				        	conn = DriverManager.getConnection(Var.sqlURL);
+				            Statement statement = conn.createStatement();
+				            System.out.println(Var.username);
+				            statement.executeUpdate("insert into " + Var.username + " (studysets) values ('" + Var.quizletSelectionTitle + "')");
+				            			            
+				            
+				        } catch (SQLException e) {
+				            System.out.println(e.getMessage());
+				        } finally {
+				            try {
+				                if (conn != null) {
+				                    conn.close();
+				                }
+				            } catch (SQLException ex) {
+				                System.out.println(ex.getMessage());
+				            }
+				        }
+			        
+			        
 			        	Stage stage = (Stage) baseBorder.getScene().getWindow();
 			            stage.close();
 			        } else {}

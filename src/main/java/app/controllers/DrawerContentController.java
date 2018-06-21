@@ -137,9 +137,9 @@ public class DrawerContentController implements Initializable{
     }
 
     public void updateSets(int i) {
-
+    	
             JFXCheckBox cb = new JFXCheckBox("Study " + Var.studySets.get(i).getTitle() + " at " + Var.studySets.get(i).getHour() + ":" + Var.studySets.get(i).getMinute() + " " + Var.studySets.get(i).getMeridiem() + " " + Var.studySets.get(i).getDay());
-
+    	
             cb.setTextFill(Color.rgb(255, 255, 255));
             cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
                 @Override
@@ -160,7 +160,7 @@ public class DrawerContentController implements Initializable{
                 }
             });
             studysets.getItems().add(cb);
-
+    	
     }
 
     @Override

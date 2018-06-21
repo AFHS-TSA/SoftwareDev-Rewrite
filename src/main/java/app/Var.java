@@ -25,6 +25,9 @@ public class Var {
 	public static boolean uranus = false;
 	public static boolean neptune = false;
 
+	// Username
+	public static String username;
+	
 	// ArrayList containing the assignments
 	public static ArrayList<Assignments> assignmentsList = new ArrayList<>();
 

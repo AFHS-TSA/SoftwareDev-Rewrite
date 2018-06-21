@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import main.java.app.Methods;
+import main.java.app.SpacedRep;
 import main.java.app.Var;
 
 public class LoginController {
@@ -32,7 +33,8 @@ public class LoginController {
 	private JFXTextField userField;
 	@FXML
 	private JFXPasswordField passField;
-
+	static int count;
+	
 	@FXML
 	void onLogin(ActionEvent event) {
 		Connection conn = null;
@@ -47,9 +49,18 @@ public class LoginController {
 					if (passField.getText().equals(rs.getString("password"))) {
 						Stage stage = (Stage) baseBorder.getScene().getWindow();
 			            stage.close();
+			            Var.username = userField.getText();
 			            Var.points = rs.getInt("points");
 			            Methods.setPoints();
-			            System.out.println(rs.getInt("points"));
+			            
+			            ResultSet sets = statement.executeQuery("select * from " + Var.username);
+			            
+			            while (sets.next()) {
+			            	SpacedRep set = new SpacedRep();
+					        set.setTitle(sets.getString("studysets"));
+					        Var.studySets.add(set);
+			            }
+			            
 						try {
 							BorderPane newStudySet = FXMLLoader.load(getClass().getResource("/main/resources/app/view/Base.fxml"));
 							Stage primaryStage = new Stage();

@@ -3,6 +3,11 @@ package main.java.app.controllers;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -108,6 +113,26 @@ public class BaseController implements Initializable {
 	private void onNewAdded() {
 		Var.assignmentsList.add(new Assignments(setTitle.getText(), setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")), setPriority.getSelectionModel().getSelectedItem().toString(), setType.getSelectionModel().getSelectedItem().toString()));
 		updateAssign(Var.assignmentsList.size() - 1);
+		
+		Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(Var.sqlURL);
+            Statement statement = conn.createStatement();
+
+            ResultSet rs = statement.executeQuery("select * from users");
+            statement.executeUpdate("");
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 	}
 
 	public void updateAssign(int i) {
