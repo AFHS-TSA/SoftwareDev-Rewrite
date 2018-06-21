@@ -69,6 +69,7 @@ public class BaseController implements Initializable {
 	private Label quote;
 	@FXML
 	private JFXButton newQuote;
+	static int count = 0;
 	/*@FXML
 	private JFXDrawer leftNavDrawer;
 	@FXML
@@ -120,7 +121,7 @@ public class BaseController implements Initializable {
             Statement statement = conn.createStatement();
 
             ResultSet rs = statement.executeQuery("select * from users");
-            statement.executeUpdate("");
+            statement.executeUpdate("insert into " + Var.username + " (assignName, duedate, priority, type) values ('" + setTitle.getText() + "', '" + setDueDate.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy")) + "', '" + setPriority.getSelectionModel().getSelectedItem().toString() + "', '" + setType.getSelectionModel().getSelectedItem().toString() + "')");
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -136,6 +137,7 @@ public class BaseController implements Initializable {
 	}
 
 	public void updateAssign(int i) {
+		
 			JFXCheckBox chkBx = new JFXCheckBox(Var.assignmentsList.get(i).title + "");
 			Label due = new Label("Due: " + Var.assignmentsList.get(i).dueDate);
 			due.setTextFill(Color.rgb(255, 255, 255, .7));
@@ -147,7 +149,7 @@ public class BaseController implements Initializable {
 				//type.setStyle("-fx-font-weight: bold");
 			} else if (Var.assignmentsList.get(i).type.equals("Regular")) {
 				type.setStyle("-fx-font-style: italic");
-			}
+			} else {System.out.println("A");}
 
 			Label pri = new Label("Priority: " + Var.assignmentsList.get(i).priority);
 			if (Var.assignmentsList.get(i).priority.equals("High")) {
@@ -170,6 +172,24 @@ public class BaseController implements Initializable {
 					listView.getItems().remove(due);
 					listView.getItems().remove(type);
 					listView.getItems().remove(pri);
+		            String chkText = chkBx.getText();
+
+					Connection conn = null;
+			        try {
+			            conn = DriverManager.getConnection(Var.sqlURL);
+			            Statement statement = conn.createStatement();
+			            statement.executeQuery("delete from " + Var.username + " where assignName = '" + chkText + "'");
+			        } catch (SQLException e) {
+			            System.out.println(e.getMessage());
+			        } finally {
+			            try {
+			                if (conn != null) {
+			                    conn.close();
+			                }
+			            } catch (SQLException ex) {
+			                System.out.println(ex.getMessage());
+			            }
+			        }
 
 					Notifications.create()
 							.title("Assignment Completed")
@@ -211,6 +231,34 @@ public class BaseController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(Var.sqlURL);
+            Statement statement = conn.createStatement();
+
+            ResultSet rs = statement.executeQuery("select * from " + Var.username);
+            while(rs.next()) {
+            	String assignName = rs.getString("assignName");
+            	String duedate = rs.getString("duedate");
+            	String priority = rs.getString("priority");
+            	String type = rs.getString("type");
+            	if(assignName == null || duedate == null || priority == null || type == null) {
+            		System.out.println("null");
+            	} else {
+            		Var.assignmentsList.add(new Assignments(assignName, duedate, priority, type));
+            	}
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 		Preferences preferences = Preferences.userNodeForPackage(Methods.class);
 		Random random = new Random();
 		int randomInt = random.nextInt((24-0) + 1);

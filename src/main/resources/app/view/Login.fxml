@@ -10,8 +10,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="userField" layoutX="133.0" layoutY="150.0" />
-            <JFXPasswordField fx:id="passField" layoutX="133.0" layoutY="211.0" />
+            <JFXTextField fx:id="userField" layoutX="133.0" layoutY="150.0" onAction="#onLogin" />
+            <JFXPasswordField fx:id="passField" layoutX="133.0" layoutY="211.0" onAction="#onLogin" />
             <JFXButton layoutX="154.0" layoutY="287.0" onAction="#onLogin" text="Login" />
             <JFXButton layoutX="201.0" layoutY="287.0" onAction="#onRegister" text="Register" />
          </children>

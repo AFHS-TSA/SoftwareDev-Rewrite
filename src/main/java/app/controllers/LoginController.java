@@ -57,8 +57,12 @@ public class LoginController {
 			            
 			            while (sets.next()) {
 			            	SpacedRep set = new SpacedRep();
-					        set.setTitle(sets.getString("studysets"));
-					        Var.studySets.add(set);
+			            	if(sets.getString("studysets") == null ) {
+			            		System.out.println("null");
+			            	} else {
+						        set.setTitle(sets.getString("studysets"));
+						        Var.studySets.add(set);
+			            	}
 			            }
 			            
 						try {
