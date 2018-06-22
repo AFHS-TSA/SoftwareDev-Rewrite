@@ -64,8 +64,16 @@ public class LoginController {
 			            		System.out.println("null");
 			            	} else {
 						        set.setTitle(sets.getString("studysets"));
+						        set.setQuizlet(sets.getBoolean("quizlet"));
+						        set.setID(sets.getInt("quizletID"));
+						        System.out.println(sets.getBoolean("quizlet"));
 						        Var.studySets.add(set);
 			            	}
+			            }
+			            
+			            ResultSet points = statement.executeQuery("select * from users");
+			            while(points.next()) {
+			            	Var.points = points.getInt("points");
 			            }
 			            
 						try {

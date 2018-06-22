@@ -50,7 +50,7 @@ public class RegisterController {
 		          }
 		          count++;
 		          statement.executeUpdate("insert into users (id, username, password) values('" + count + "', '" + userField.getText().toString() + "', '" + passField.getText().toString() + "')");
-		          statement.executeUpdate("create table " + userField.getText() + " (studysets string, assignName string, duedate string, priority string, type string, points integer)");
+		          statement.executeUpdate("create table " + userField.getText() + " (studysets string, quizlet int, quizletID int, assignName string, duedate string, priority string, type string, points integer)");
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			} finally {

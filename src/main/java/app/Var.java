@@ -47,5 +47,6 @@ public class Var {
 	public static int flashID;
 	
 	// SQL Path (NOTE: Change to your system)
-	public static String sqlURL = "jdbc:sqlite:C:\\Users\\Srinath\\com.srinath.coding\\SoftwareDev-Rewrite\\Data.db";
+	//public static String sqlURL = "jdbc:sqlite:C:\\Users\\Srinath\\com.srinath.coding\\SoftwareDev-Rewrite\\Data.db";
+	public static String sqlURL = "jdbc:sqlite:C:\\Users\\Jason\\Desktop\\SoftwareDev-Rewrite\\Data.db";
 	}

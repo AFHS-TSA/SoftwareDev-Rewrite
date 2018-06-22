@@ -179,7 +179,7 @@ public class QuizletSearchController implements Initializable {
 				        	conn = DriverManager.getConnection(Var.sqlURL);
 				            Statement statement = conn.createStatement();
 				            System.out.println(Var.username);
-				            statement.executeUpdate("insert into " + Var.username + " (studysets) values ('" + Var.quizletSelectionTitle + "')");
+				            statement.executeUpdate("insert into " + Var.username + " (studysets, quizlet, quizletID) values ('" + Var.quizletSelectionTitle + "', 1, " + Var.quizletSelectionID + ")");
 				            			            
 				            
 				        } catch (SQLException e) {

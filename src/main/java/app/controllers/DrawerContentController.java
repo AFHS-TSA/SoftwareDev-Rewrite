@@ -32,10 +32,16 @@ import org.controlsfx.control.Notifications;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -155,6 +161,7 @@ public class DrawerContentController implements Initializable{
                                 .text(Var.studySets.get(i).getTitle() + " studied")
                                 .hideAfter(Duration.seconds(5))
                                 .showConfirm();
+                        System.out.println(Var.studySets.get(i).getQuizlet());
                         if (Var.studySets.get(i).getQuizlet()) {
                             Var.flashID = Var.studySets.get(i).getID();
                             try {
@@ -205,6 +212,23 @@ public class DrawerContentController implements Initializable{
                         updateSets(i);
                     }
 
+                    
+                    Connection conn = null;
+                    try {
+                        conn = DriverManager.getConnection(Var.sqlURL);
+                        Statement statement = conn.createStatement();
+                        statement.executeUpdate("UPDATE users SET points=" + Var.points + " WHERE username='" + Var.username + "'");
+                    } catch (SQLException e) {
+                        System.out.println(e.getMessage());
+                    } finally {
+                        try {
+                            if (conn != null) {
+                                conn.close();
+                            }
+                        } catch (SQLException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    }
 
                 });
             }

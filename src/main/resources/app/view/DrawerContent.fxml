@@ -10,9 +10,9 @@
 
 <AnchorPane maxHeight="627.0" minHeight="600.0" minWidth="300.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.app.controllers.DrawerContentController">
    <children>
-      <JFXButton fx:id="pomodoro" buttonType="RAISED" layoutX="98.0" layoutY="487.0" onAction="#onPomClicked" style="-fx-background-color: #212121;" text="Pomodoro Timer" textFill="#ffffffb2" />
-      <JFXButton fx:id="rewards" buttonType="RAISED" layoutX="115.0" layoutY="541.0" onAction="#onRewardsClicked" style="-fx-background-color: #212121;" text="My Galaxy" textFill="#ffffffb2" />
-      <JFXButton fx:id="newstudy" buttonType="RAISED" layoutX="103.0" layoutY="429.0" onAction="#onNewClicked" style="-fx-background-color: #212121;" text="New Study Set" textFill="#ffffffb2" />
+      <JFXButton fx:id="pomodoro" buttonType="RAISED" layoutX="98.0" layoutY="508.0" onAction="#onPomClicked" style="-fx-background-color: #212121;" text="Pomodoro Timer" textFill="#ffffffb2" />
+      <JFXButton fx:id="rewards" buttonType="RAISED" layoutX="115.0" layoutY="546.0" onAction="#onRewardsClicked" style="-fx-background-color: #212121;" text="My Galaxy" textFill="#ffffffb2" />
+      <JFXButton fx:id="newstudy" buttonType="RAISED" layoutX="103.0" layoutY="437.0" onAction="#onNewClicked" style="-fx-background-color: #212121;" text="New Study Set" textFill="#ffffffb2" />
       <Label fx:id="clock" layoutX="83.0" layoutY="14.0" text="00:00 AM" textFill="WHITE">
          <font>
             <Font size="32.0" />
@@ -42,6 +42,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="flashcard" buttonType="RAISED" layoutX="165.0" layoutY="462.0" onAction="#onFlash" style="-fx-background-color: #212121;" text="Flashcard" textFill="#ffffffb2" />
+      <JFXButton fx:id="flashcard" buttonType="RAISED" layoutX="119.0" layoutY="472.0" onAction="#onFlash" style="-fx-background-color: #212121;" text="Flashcard" textFill="#ffffffb2" />
    </children>
 </AnchorPane>
